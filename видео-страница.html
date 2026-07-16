@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="VanTube">
+    <meta property="og:description" content="Чтобы посмотреть видео, нажмите на ссылку.">
+    <meta property="og:image" content="style/VanTube logo.png">
+    <meta property="og:url" content="https://vantubeofficial-ship-it.github.io/vantube_official/видео-страница.html">
+    <meta property="og:type" content="website">
+    <title>VanTube Главная</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/Style.css" />
+    <link rel="stylesheet" href="style/nav-bar.css">
+    <link rel="stylesheet" href="style/video_in_vantube.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://github.com/vantubeofficial-ship-it/vantube_official/blob/main/style/site_ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://github.com/vantubeofficial-ship-it/vantube_official/blob/main/style/site_ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://github.com/vantubeofficial-ship-it/vantube_official/blob/main/style/site_ico/favicon-16x16.png">
+    <link rel="manifest" href="https://raw.githubusercontent.com/vantubeofficial-ship-it/vantube_official/refs/heads/main/style/site_ico/site.webmanifest">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><img src="https://vantubeofficial-ship-it.github.io/vantube_official/style/VanTube%20logo.png" alt=""></span>
+        </button>
+                <a class="navbar-brand" href="index.html"><img src="https://vantubeofficial-ship-it.github.io/vantube_official/style/VanTube%20logo.png" alt=""></a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-bar_list">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Домашняя страница</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="обратная связь.html">Обратная связь</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="о нас.html">О нас</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="сообщество.html">Сообщество</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="новости.html">Новости</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="поиск.html">Поиск</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="видео.html">Видео</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div class="main-container">
+            <div class="video-container" id="video-container">
+                <div class="video-view-container">
+                    <div class="vantube-logo">
+                        <img src="style/VanTube logo.png" alt="">
+                        <h2>VanTube</h2>
+                    </div>
+                    <div class="vantube-video-item" id="vantube-video-item">
+                        <video id="vantube-video" src="#" poster="#"></video>
+                    </div>
+                    <div class="video-controls">
+                        <button id="video-play-button"><img id = "video-play-button-image" src="video_in_vantube/style/vantube video player/play button active.png" alt=""></button>
+                        <div id="video-progress">
+                            <input type="range" id="video-proggressbar-slider">
+                        </div>
+                        <p id="video-time"><span id="current-time"></span> / <span id="duration-time"></span></p>
+                        <button id="volume-muted"><img id="volume-muted-image" src="video_in_vantube/style/vantube video player/volume button unmute.png" alt=""></button>
+                        <input type="range" id="volume-range-slider" min="0" max="1" step="0.1" value="0">
+                    </div>
+                </div>
+                <div class="author" id="author">
+            
+                </div>
+                <div class="head" id="head">
+            
+                </div>
+            </div>
+            <div class="recommendations-bar" id="recomm-bar">
+                <h4>Рекомендации(beta)</h4>
+                <div class="recomm-bar-item">
+                 <div class="video-preview">
+                    <img src="" id="video-preview-img" alt="">
+                 </div>
+                 <div class="video-name">
+                     <h5>Название видео</h5>
+                 </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="VanTube datebase.js"></script>
+        <script>
+    /*Часть скрипта для загрузки данных для видео*/
+            const video_container = document.getElementById("video-container");
+            const recomm_bar = document.getElementById("recomm-bar")
+            const vantube_video = document.getElementById("vantube-video")
+            const author = document.getElementById("author")
+            const head = document.getElementById("head")
+            const video_time = document.getElementById("video-time")
+            const current_time = document.getElementById("current-time")
+            const duration_time = document.getElementById("duration-time")
+            const search = new URLSearchParams(window.location.search);
+            const id = Number(search.get('id'));
+            const video = VideoDatabase[id-1];
+            vantube_video.addEventListener("loadedmetadata", () => {
+                const full_time = vantube_video.duration;
+                const ViewFullTime = function(time) {
+                    const hours = Math.floor(time / 3600);
+                    const minutes = Math.floor((time % 3600) / 60);
+                    const seconds = Math.floor(time % 60);
+                
+                    const format_hours = String(hours).padStart(2,"0")
+                    const format_minutes = String(minutes).padStart(2,"0")
+                    const format_seconds = String(seconds).padStart(2,"0")
+                    if (hours > 0) {
+                        return `${format_hours}:${format_minutes}:${format_seconds}`
+                    }
+                    else {
+                        return `${format_minutes}:${format_seconds}`
+                    }
+                }
+                
+                duration_time.innerHTML = ViewFullTime(full_time)
+            })
+            window.addEventListener("load", function () {
+                vantube_video.src = video.src; vantube_video.poster = video.poster;
+                author.innerHTML = 
+                `<h3>${video.author}</h3>`
+                head.innerHTML = 
+                `<h2>${video.name}</h2>
+                <p>${video.description}</p>`
+                VideoDatabase.forEach(video => {
+                if (video.id !== String(id)) {
+                    recomm_bar.innerHTML += `
+                <div class="recomm-bar-item">
+                  <a class="video-link" href="видео-страница.html?id=${video.id}">
+                      <div class="video-preview">
+                        <img src="${video.poster}" id="video-preview-img" alt="">
+                      </div>
+                      <div class="video-name">
+                         <h5>${video.name}</h5>
+                      </div>
+                  </a>
+                </div>`}
+                })
+            })
+    /*Часть скрипта для функционирования видео-плеера*/
+        const video_play_button = document.getElementById("video-play-button")
+        const video_proggressbar_slider = document.getElementById("video-proggressbar-slider")
+        const volume_muted = document.getElementById("volume-muted")
+        const volume_range_slider = document.getElementById("volume-range-slider")
+        const video_play_button_image = document.getElementById("video-play-button-image")
+        const button_active = "video_in_vantube/style/vantube video player/play button active.png"
+        const button_paused = "video_in_vantube/style/vantube video player/play button paused.png"
+        const volume_muted_image = document.getElementById("volume-muted-image")
+        const img_muted = "video_in_vantube/style/vantube video player/volume button mute.png"
+        const img_unmuted = "video_in_vantube/style/vantube video player/volume button unmute.png"
+        video_play_button.addEventListener("click", function() {
+            if(vantube_video.paused === true) {
+                vantube_video.play()
+                video_play_button_image.src = button_paused
+            }
+            else {
+                vantube_video.pause()
+                video_play_button_image.src = button_active
+            }
+        })
+        const ViewCurrentTime = function(current_time) {
+                    const hours = Math.floor(current_time / 3600);
+                    const minutes = Math.floor((current_time % 3600) / 60);
+                    const seconds = Math.floor(current_time % 60);  
+                
+                    const format_hours = String(hours).padStart(2,"0")
+                    const format_minutes = String(minutes).padStart(2,"0")
+                    const format_seconds = String(seconds).padStart(2,"0")
+                    
+                    if (hours > 0) {
+                        return `${format_hours}:${format_minutes}:${format_seconds}`
+                    }
+                    else {
+                        return `${format_minutes}:${format_seconds}`
+                    }
+                }
+        vantube_video.addEventListener("timeupdate", function () {
+            const video_current_time = vantube_video.currentTime
+            const progress = (vantube_video.currentTime / vantube_video.duration) * 100
+            video_proggressbar_slider.value = progress
+            current_time.innerHTML = ViewCurrentTime(video_current_time)
+        })
+        video_proggressbar_slider.addEventListener("input", function () {
+            const newTime = (video_proggressbar_slider.value / 100 )* vantube_video.duration;
+            vantube_video.currentTime = newTime;
+        })
+        volume_muted.addEventListener("click", function() {
+           if (vantube_video.volume > 0) {
+            vantube_video.volume = 0; volume_range_slider.value = 0; volume_muted_image.src = img_muted}
+           else {
+            vantube_video.volume = 0.5; volume_range_slider.value = 0.5;
+            volume_muted_image.src = img_unmuted}
+        })
+        volume_range_slider.addEventListener("input", function() {
+            vantube_video.volume = volume_range_slider.value
+            if (volume_range_slider.value > 0) {
+                volume_muted_image.src = img_unmuted
+            }
+            else {
+                volume_muted_image.src = img_muted
+            }
+        })
+        </script>
+    </section>
+    <footer>
+        <div class="footer-object">
+            <div class="footer-block" id="uridic-info">
+                <p>2026 Vanko Corporation. Все права защищены</p>
+            </div>
+            <div class="footer-block" id="links-footer">
+                <a href="https://youtube.com/@VanTubeOfficial" target="_blank"><img src="https://vantubeofficial-ship-it.github.io/vantube_official/style/Youtube%20logo.png" alt=""></a>
+                <a href="https://t.me/VanTube_official" target="_blank"><img src="https://vantubeofficial-ship-it.github.io/vantube_official/style/Telegram%20logo.png" alt=""></a>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
