@@ -1,0 +1,21 @@
+#nav-bar_list > .nav-item > .nav-link {
+ color: white;
+}
+
+.navbar-collapse > #nav-bar_list > .nav-item > .nav-link.active {
+ color: rgb(44, 44, 247);
+}
+
+.navbar > .container-fluid > .navbar-brand > img{
+ width: 40px;
+}
+
+.navbar-toggler > .navbar-toggler-icon > {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+.navbar-toggler > .navbar-toggler-icon > img {
+ width: 40px;
+}
