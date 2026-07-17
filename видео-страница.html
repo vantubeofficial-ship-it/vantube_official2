@@ -71,12 +71,12 @@
                         <video id="vantube-video" src="#" poster="#"></video>
                     </div>
                     <div class="video-controls">
-                        <button id="video-play-button"><img id = "video-play-button-image" src="video_in_vantube/style/vantube video player/play button active.png" alt=""></button>
+                        <button id="video-play-button"><img id = "video-play-button-image" src="style/video_in_vantube/style/vantube video player/play button active.png" alt=""></button>
                         <div id="video-progress">
                             <input type="range" id="video-proggressbar-slider">
                         </div>
                         <p id="video-time"><span id="current-time"></span> / <span id="duration-time"></span></p>
-                        <button id="volume-muted"><img id="volume-muted-image" src="video_in_vantube/style/vantube video player/volume button unmute.png" alt=""></button>
+                        <button id="volume-muted"><img id="volume-muted-image" src="style/video_in_vantube/style/vantube video player/volume button unmute.png" alt=""></button>
                         <input type="range" id="volume-range-slider" min="0" max="1" step="0.1" value="0">
                     </div>
                 </div>
@@ -162,11 +162,11 @@
         const volume_muted = document.getElementById("volume-muted")
         const volume_range_slider = document.getElementById("volume-range-slider")
         const video_play_button_image = document.getElementById("video-play-button-image")
-        const button_active = "video_in_vantube/style/vantube video player/play button active.png"
-        const button_paused = "video_in_vantube/style/vantube video player/play button paused.png"
+        const button_active = "style/video_in_vantube/style/vantube video player/play button active.png"
+        const button_paused = "style/video_in_vantube/style/vantube video player/play button paused.png"
         const volume_muted_image = document.getElementById("volume-muted-image")
-        const img_muted = "video_in_vantube/style/vantube video player/volume button mute.png"
-        const img_unmuted = "video_in_vantube/style/vantube video player/volume button unmute.png"
+        const img_muted = "style/video_in_vantube/style/vantube video player/volume button mute.png"
+        const img_unmuted = "style/video_in_vantube/style/vantube video player/volume button unmute.png"
         video_play_button.addEventListener("click", function() {
             if(vantube_video.paused === true) {
                 vantube_video.play()
