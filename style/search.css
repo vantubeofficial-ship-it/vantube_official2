@@ -84,6 +84,12 @@ input[type="radio"] {
     padding: 0.25em;
 }
 
+#input-search:focus{
+    transform: scale(0.95);
+    background-color: #bfdbee;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+}
+
 #search-action-button {
     border-radius: 1em;
     box-shadow: none;
