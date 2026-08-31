@@ -52,8 +52,10 @@
 
 /*Страница для просмотра видео*/
 
-
-
+.recommendations-bar > .recomm-bar-item > .video-preview > .video-preview-img{
+    width: 200px;
+    height: 125px;
+}
 .main-container {
     display: flex;
     flex-direction: row;
@@ -87,7 +89,7 @@
 
 .video-container>.video-view-container {
     display: flex;
-    height: 35em;
+    height: 30em;
     flex-direction: column;
     justify-content: left;
     align-items: left;
@@ -99,12 +101,12 @@
 
 .video-container>.video-view-container>.vantube-video-item {
     display: flex;
-    justify-content: left;
+    justify-content: center;
 }
 
 .video-container>.video-view-container>.vantube-video-item>video {
-    height: 25em;
-    width: 50em;
+    height: 350px;
+    width: 700px;
 }
 
 .video-container>.video-view-container>.video-controls {
@@ -127,7 +129,6 @@
 #video-progress {
     display: flex;
     align-items: center;
-    width: 30em;
 
 }
 
@@ -148,14 +149,18 @@
 .video-container>.head {
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    justify-content: center;
     background-color: rgb(201, 201, 201);
     border-radius: 5px;
     max-width: 50em;
 }
 
+.video-container >.head> h2 {
+ margin: 5px;
+}
+
 .video-container>.head>p {
-    margin: 10px;
+    margin: 5px;
 }
 
 .recommendations-bar {
@@ -184,44 +189,53 @@
 }
 
 .recomm-bar-item>a>.video-preview>img {
-    width: 20em;
+    width: 10em;
+    height: 9em;
 }
 
 .recomm-bar-item>a>.video-name>h5 {
     text-align: center;
 }
 
-@media (max-width: 1165px) {
+#video-time {
+    margin-inline: 5em;
+}
+
+@media (max-width: 1000px) {
     .recomm-bar-item>a>.video-preview>img {
         width: 15em;
     }
 
     .video-container>.video-view-container>.vantube-video-item>video {
-        height: 19.5em;
-        width: 45em;
+        height: 340px;
+        width: 680px;
 
     }
+    
+    #volume-range-slider {
+    width: 5em;
 }
 
-@media (max-width: 1028px) {
+  #video-progress>#video-proggressbar-slider {
+    width: 100%;
+    margin: 0.15em;
+}
+
+}
+
+@media (max-width: 900px) {
     .recomm-bar-item>a>.video-preview>img {
         width: 14em;
     }
 
     .video-container>.video-view-container>.vantube-video-item>video {
-        height: 19.5em;
-        width: 42em;
+        height: 320px;
+        width: 640px;
 
     }
 }
 
 @media (max-width: 950px) {
-
-    .video-container>.video-view-container>.vantube-video-item>video {
-        height: 19.5em;
-        width: 40em;
-
-    }
 
     .video-container>.head {
         display: flex;
@@ -239,8 +253,8 @@
 @media (max-width: 800px) {
 
     .video-container>.video-view-container>.vantube-video-item>video {
-        height: 13em;
-        width: 30em;
+        height: 260px;
+        width: 520px;
 
     }
 
@@ -251,13 +265,17 @@
         background-color: rgb(201, 201, 201);
         border-radius: 5px;
     }
+
+    #video-time {
+    margin-inline: 2.5em;
+}
 }
 
 @media (max-width: 500px) {
 
     .video-container>.video-view-container>.vantube-video-item>video {
-        height: 9.7em;
-        width: 25em;
+        height: 200px;
+        width: 400px;
 
     }
 
