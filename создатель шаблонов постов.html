@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="VanTube">
+    <meta property="og:description" content="Создатель шаблонов постов.">
+    <meta property="og:image" content="style/VanTube logo.png">
+    <meta property="og:url" content="https://vantubeofficial-ship-it.github.io/vantube_official/создатель шаблонов постов.html">
+    <meta property="og:type" content="website">
+    <title>О нас</title>
+    <link rel="stylesheet" href="style\Style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style/nav-bar.css">
+    <link rel="stylesheet" href="style/post-maker.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="style/site_ico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="style/site_ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="style/site_ico/favicon-16x16.png">
+    <link rel="manifest"
+        href="https://raw.githubusercontent.com/vantubeofficial-ship-it/vantube_official2/refs/heads/main/style/site_ico/site.webmanifest">
+</head>
+
+<body>
+
+
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><img src="style/VanTube logo.png" alt=""></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="style/VanTube logo.png" alt=""></a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-bar_list">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Домашняя страница</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="обратная связь.html">Обратная связь</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="о нас.html">О нас</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="сообщество.html">Сообщество</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="новости.html">Новости</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="поиск.html">Поиск</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="видео.html">Видео</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="создатель шаблонов постов.html">Видео</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div class="header-banner">
+            <a href="">
+                <p></p>
+            </a>
+        </div>
+        <div class="about-page">
+            <h1>Создатель шаблонов постов</h1>
+            <div class="post-maker-item">
+                <div class="post-maker-head-panel">
+                    <div class="post-mkr-r-item">
+                        <input type="radio" name="isVideo" id="isVideo">
+                        <label for="isVideo">Видео</label>
+                    </div>
+                    <div class="post-mkr-r-item">
+                        <input type="radio" name="isShort" id="isShort">
+                        <label for="isShort">Короткое видео</label>
+                    </div>
+                    <div class="post-mkr-r-item">
+                        <input type="radio" name="isMusicVideo" id="isMusicVideo">
+                        <label for="isMusicVideo">Видео-клип</label>
+                    </div>
+                    <div class="post-mkr-r-item">
+                        <input type="radio" name="isAudioTrack" id="isAudioTrack">
+                        <label for="isAudioTrack">Аудио-трек</label>
+                    </div>
+                    <div class="post-mkr-r-item">
+                        <input type="radio" name="isProfile" id="isProfile">
+                        <label for="isProfile">Пост профиля</label>
+                    </div>
+                </div>
+                <div class="post-text-body">
+                    <form onsubmit="event.preventDefault(); VanPostSubmitTarget();" id="post-maker-form">
+                        <div class="post-mkr-frm-input-items">
+                            <input type="text" name="Название" class="post-mkr-frm-input" placeholder="Название">
+                            <input type="text" name="Автор" class="post-mkr-frm-input" placeholder="Автор">
+                            <input type="text" name="Тип" class="post-mkr-frm-input" placeholder="Тип">
+                            <input type="text" name="Описание" class="post-mkr-frm-input" placeholder="Описание">
+                            <input type="text" name="Возрастные ограничения" class="post-mkr-frm-input"
+                                placeholder="Возрастные ограничения">
+                            <input type="text" name="Аудио" class="post-mkr-frm-input" placeholder="Аудио">
+                            <input type="text" name="Тайм-коды" class="post-mkr-frm-input" placeholder="Тайм-коды">
+                            <input type="text" name="Хэштеги" class="post-mkr-frm-input" placeholder="Хештеги">
+                            <input type="text" name="Имя Профиля" class="post-mkr-frm-input" placeholder="Имя Профиля">
+                            <input type="text" name="Описание Профиля" class="post-mkr-frm-input"
+                                placeholder="Описание Профиля">
+                            <input type="text" name="TelegramId" class="post-mkr-frm-input" placeholder="TelegramId">
+                            <input type="text" name="Хэштег Профиля" class="post-mkr-frm-input"
+                                placeholder="Хэштег Профиля">
+                            <input type="text" name="Ссылки Профиля" class="post-mkr-frm-input"
+                                placeholder="Ссылки Профиля">
+                        </div>
+                        <div class="post-maker-button-item">
+                            <button type="submit" class="post-maker-button" id="post-mkr-btn">Создать</button>
+                        </div>
+                    </form>
+                    <div class="post-text-body-code-items" id="post-txt-code-items">
+                    </div>
+                </div>
+                <div class="post-maker-footer-panel">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-object">
+            <div class="footer-block" id="uridic-info">
+                <p>2026 Vanko Corporation. Все права защищены</p>
+            </div>
+            <div class="footer-block" id="links-footer">
+                <a href="https://youtube.com/@VanTubeOfficial" target="_blank"><img src="style/Youtube logo.png"
+                        alt=""></a>
+                <a href=" https://t.me/VanTube_official" target="_blank"><img src="style/Telegram logo.png" alt=""></a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="VanTube datebase.js"></script>
+    <script>
+        window.addEventListener("load", () => {
+            const post_txt_code_items = document.getElementById("post-txt-code-items")
+            const isVideoRadio = document.getElementById("isVideo")
+            const isShortRadio = document.getElementById("isShort")
+            const isMusVideoRadio = document.getElementById("isMusicVideo")
+            const isAudTrackRadio = document.getElementById("isAudioTrack")
+            const isProfileRadio = document.getElementById("isProfile")
+            document.querySelectorAll('input[type="text"]').forEach(input => {
+                if (isVideoRadio.checked || isShortRadio.checked) {
+                    if (input.name === "Аудио" || input.name === "Имя Профиля" || input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля") {
+                        input.style.display = "none"
+                    }
+                }
+                if (isMusVideoRadio.checked || isAudTrackRadio.checked) {
+                    if (input.name === "Имя Профиля" || input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля") {
+                        input.style.display = "none"
+                    }
+                }
+                if (isProfileRadio.checked) {
+                    if (input.name === "Название" || input.name === "Автор" || input.name === "Описание" || input.name === "Тайм-коды" || input.name === "Аудио" || input.name === "Тайм-коды" || input.name === "Возрастные ограничения") {
+                        input.style.display = "none"
+                    }
+                }
+            })
+            document.querySelectorAll('input[type="radio"]').forEach(radio_btn => {
+                radio_btn.addEventListener("click", (e) => {
+                    const radioBtnName = e.target.name
+                    document.querySelectorAll('input[type="radio"]').forEach(r_btn_in_doc => {
+                        if (radioBtnName !== r_btn_in_doc.name) {
+                            r_btn_in_doc.checked = false
+                        }
+                        else {
+                            r_btn_in_doc.checked = true
+                        }
+                    })
+                    document.querySelectorAll('input[type="text"]').forEach(input => {
+                        if (isVideoRadio.checked || isShortRadio.checked) {
+                            if (input.name === "Аудио" || input.name === "Имя Профиля" || input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля") {
+                                input.style.display = "none"
+                            }
+                            if (input.name === "Название" || input.name === "Автор" || input.name === "Описание" || input.name === "Тайм-коды" || input.name === "Тайм-коды" || input.name === "Возрастные ограничения") {
+                                input.style.display = "inline"
+                            }
+                        }
+                        if (isMusVideoRadio.checked || isAudTrackRadio.checked) {
+                            if (input.name === "Имя Профиля" || input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля") {
+                                input.style.display = "none"
+                            }
+                            if (input.name === "Название" || input.name === "Автор" || input.name === "Описание" || input.name === "Тайм-коды" || input.name === "Аудио" || input.name === "Тайм-коды" || input.name === "Возрастные ограничения") {
+                                input.style.display = "inline"
+                            }
+                        }
+                        if (isProfileRadio.checked) {
+                            if (input.name === "Название" || input.name === "Автор" || input.name === "Описание" || input.name === "Тайм-коды" || input.name === "Аудио" || input.name === "Тайм-коды" || input.name === "Возрастные ограничения") {
+                                input.style.display = "none"
+                            }
+                            if (input.name === "Имя Профиля" || input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля") {
+                                input.style.display = "inline"
+                            }
+                        }
+                    })
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

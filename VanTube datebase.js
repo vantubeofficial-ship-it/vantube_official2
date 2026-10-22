@@ -65,7 +65,7 @@
     <p>В будущем поиск будет обновляться и добавятся новые функции для поиска</p>
     <p></p>`, data: "25.05.2026"
 }
-, {
+    , {
     id: 10, preview: "style/VanTube News Preview 8.png", headers: "Летний сезон на VanTube", text: `<p>Мы поздравляем пользователей VanTube с началом летнего сезона</p>
     <p>Во время этого сезона на сайте появится множество новых видео на летнюю тематику, чтобы вы могли насладиться этим летом вместе с нами.</p>
     <p>Мы очень надеемся что этот летний сезон и лето пройдут у вас интересно, весело и продуктивно</p>
@@ -78,7 +78,7 @@
     <p>Попробовать использование плеера можно, кликнув по <a href="видео-страница.html?id=1">ссылке</a></p>
     <p></p>
     <p></p>`, data: "05.06.2026"
-}, 
+},
 {
     id: 12, preview: "style/VanTube News Preview.png", headers: "Крупное обновление VanTube - новый сервер для хранения видео и датабазы!", text: `<p>У нашего офиц сайта наконец-то появился собственный сервер для хранения большого количества видео и датабазы сайта ,предназначенной для подгрузки видео, результатов поиска и нвостей.</p>
     <p>Сервер имеет более 400гб свободного места, что является достаточно хорошим показателем для нас</p>
@@ -99,17 +99,69 @@
     <p>Не забывайте подписываться на наш официальный ТГ канал (ссылка на странице с контактами).</p>
     <p>Надеюсь вы провели это лето хорошо!</p>
     <p></p>`, data: "30.08.2026"
+},
+{
+    id: 15, preview: "style/VanTube News Preview.png", headers: "Новый редактор постов на нашем сайте", text: `<p>На нашем официальном сайте появился редактор постов для VanTube, где вы можете написать весь новый текст правильно, но без лишних усилий.
+    </p>
+    <p>К примеру если вы будете делать текст для поста типа "Видео" 
+    (тип можно изменить, нажав на одну из радиокнопок на верхней панели редактора, надписи которых обозначают нужный тип поста),
+     у вас будут доступны только поля ввода для вашего типа, а для типа "Профиль" только свои.</p>
+    <p>Не забывайте подписываться на наш официальный ТГ канал (ссылка на странице с контактами).</p>
+    <p>Опробовать новый редактор можно перейдя по <a href="Создатель шаблонов постов.html">ссылке<a/> </p>
+    <p></p>`, data: "22.10.2026"
 }
 ];
-const PageDatabase = [{id:"1", name:"Главная страница (index)", description:"Главная страница сайта VanTube, здесь вы можете узнать основную информацию о нашем сервисе VanTube", url:"index.html"},
-{id:"2", name:"Обратная связь", description:"Ссылки на наши аккаунты в других сервисах", url:"обратная связь.html"},
-{id:"3", name:"О нас (about)", description:"Здесь мы можете узнать дополнительную информацию и историю о VanTube", url:"о нас.html"},
-{id:"4", name:"Сообщество", description:"Подробнее об сообществе VanTube", url:"сообщество.html"},
-{id:"5", name:"Новости", description:"Здесь можно узнать о последних новостях и обновлениях VanTube", url:"новости.html"},
-{id:"6", name:"Другие сервисы", description:"Информация и ссылки на другие сервисы VanTube Inc", url:"другие сервисы.html"},
-{id:"7", name:"Видео", description:"Страница с рекомендованными видео для просмотра", url:"видео.html"}];
+const PageDatabase = [{ id: "1", name: "Главная страница (index)", description: "Главная страница сайта VanTube, здесь вы можете узнать основную информацию о нашем сервисе VanTube", url: "index.html" },
+{ id: "2", name: "Обратная связь", description: "Ссылки на наши аккаунты в других сервисах", url: "обратная связь.html" },
+{ id: "3", name: "О нас (about)", description: "Здесь мы можете узнать дополнительную информацию и историю о VanTube", url: "о нас.html" },
+{ id: "4", name: "Сообщество", description: "Подробнее об сообществе VanTube", url: "сообщество.html" },
+{ id: "5", name: "Новости", description: "Здесь можно узнать о последних новостях и обновлениях VanTube", url: "новости.html" },
+{ id: "6", name: "Другие сервисы", description: "Информация и ссылки на другие сервисы VanTube Inc", url: "другие сервисы.html" },
+{ id: "7", name: "Видео", description: "Страница с рекомендованными видео для просмотра", url: "видео.html" }];
 
-const VideoDatabase = [{ id:"1", name:"Windows в PowerPoint'е", src:"style/video_in_vantube/style/video №1.mp4", poster:"https://i.ytimg.com/vi/I5VcCqK6pPM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD2I1wynZtq9pTQjCZqIJN0_f_XzQ", description:`Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/2">нашем TG</a>`, author:"Vanko Corporation"}, 
-{ id:"2", name:"Windows 8 в PowerPoint'е", src:"style/video_in_vantube/style/video №2.mp4", poster:"https://i.ytimg.com/vi/hmSQgVujhhA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDC8VSK1HJhJJafhNsBH8EXOSK3zQ", description:`Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/6">нашем TG</a>`, author:"Vanko Corporation"}, 
-{ id:"3", name:"Трейлер релиза Shindows SG Visla! (3-летие шиндофандома)", src:"style/video_in_vantube/style/video №3.mp4", poster:"https://i.ytimg.com/vi/3kABfFOf2j8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBGehqfSrmo8r-vVr4teNLjNEjlOA", description:`Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/303">нашем TG</a> или <a href="https://www.youtube.com/watch?v=3kABfFOf2j8"> Ютуб канале</a>`, author:"Vanko Corporation"}, 
-{ id:"4", name:"ОТКУДА ОН ЗНАЕТ?! #vanko #memes #powerpoint #meme #мем", src:"style/video_in_vantube/style/video №4.mp4", poster:"https://i.ytimg.com/vi/HGWZ-UWUIf0/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDN6O_ADk6SQCX0lSnQA9ysn8qUdQ&usqp=CCk", description:`Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/275">нашем TG</a>`, author:"ГригорийПончик"}];
+const VideoDatabase = [{ id: "1", name: "Windows в PowerPoint'е", src: "style/video_in_vantube/style/video №1.mp4", poster: "https://i.ytimg.com/vi/I5VcCqK6pPM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD2I1wynZtq9pTQjCZqIJN0_f_XzQ", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/2">нашем TG</a>`, author: "Vanko Corporation" },
+{ id: "2", name: "Windows 8 в PowerPoint'е", src: "style/video_in_vantube/style/video №2.mp4", poster: "https://i.ytimg.com/vi/hmSQgVujhhA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDC8VSK1HJhJJafhNsBH8EXOSK3zQ", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/6">нашем TG</a>`, author: "Vanko Corporation" },
+{ id: "3", name: "Трейлер релиза Shindows SG Visla! (3-летие шиндофандома)", src: "style/video_in_vantube/style/video №3.mp4", poster: "https://i.ytimg.com/vi/3kABfFOf2j8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBGehqfSrmo8r-vVr4teNLjNEjlOA", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/303">нашем TG</a> или <a href="https://www.youtube.com/watch?v=3kABfFOf2j8"> Ютуб канале</a>`, author: "Vanko Corporation" },
+{ id: "4", name: "ОТКУДА ОН ЗНАЕТ?! #vanko #memes #powerpoint #meme #мем", src: "style/video_in_vantube/style/video №4.mp4", poster: "https://i.ytimg.com/vi/HGWZ-UWUIf0/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDN6O_ADk6SQCX0lSnQA9ysn8qUdQ&usqp=CCk", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/275">нашем TG</a>`, author: "ГригорийПончик" }];
+
+const VanPostTypes =
+    [
+        { id: 1, name: "video", keys_list: { name: "", author: "", postType: "", postDescription: "", postAgeReg: "", postTimeCode: "", postHashtegs: "" } },
+        { id: 2, name: "short", keys_list: { name: "", author: "", postType: "", postDescription: "", postAgeReg: "", postTimeCode: "", postHashtegs: "" } },
+        { id: 3, name: "music-video", keys_list: { name: "", author: "", postType: "", postDescription: "", postAgeReg: "", postAudio: "", postTimeCode: "", postHashtegs: "" } },
+        { id: 4, name: "audio-track", keys_list: { name: "", author: "", postType: "", postDescription: "", postAgeReg: "", postAudio: "", postTimeCode: "", postHashtegs: "" } },
+        { id: 5, name: "profile", keys_list: { profileName: "", postType: "", profileDescription: "", profileLink: "", profileHashtegs: "" } }
+    ]
+//Функция для обработчика клика кнопки (нужна для обработки и создания текста поста в создателе шаблонов постов) 
+const VanPostSubmitTarget = () => {
+    const post_maker_form = document.getElementById("post-maker-form")
+    const post_mkr_frm_input = document.querySelectorAll(".post-mkr-frm-input")
+    const post_txt_code_items = document.getElementById("post-txt-code-items")
+    const isVideoRadio = document.getElementById("isVideo")
+    const isShortRadio = document.getElementById("isShort")
+    const isMusVideoRadio = document.getElementById("isMusicVideo")
+    const isAudTrackRadio= document.getElementById("isAudioTrack")
+    const isProfileRadio = document.getElementById("isProfile")
+    post_txt_code_items.innerHTML = ``
+    post_mkr_frm_input.forEach(input => {
+      if (isVideoRadio.checked || isShortRadio.checked) {
+       if (input.name !== "Аудио" && input.name !== "Имя Профиля" &&  input.name !== "Описание Профиля" && input.name !== "TelegramId" && input.name !== "Хэштег Профиля" && input.name !== "Ссылки Профиля" ) {
+        post_txt_code_items.innerHTML += `<code class="post-text-body-code-item" id="post-txt-code-item">${input.name}: ${input.value} </code>`
+       }
+      }
+      if (isMusVideoRadio.checked || isAudTrackRadio.checked) {
+       if (input.name !== "Имя Профиля" &&  input.name !== "Описание Профиля" && input.name !== "TelegramId" && input.name !== "Хэштег Профиля" && input.name !== "Ссылки Профиля" ) {
+        post_txt_code_items.innerHTML += `<code class="post-text-body-code-item" id="post-txt-code-item">${input.name}: ${input.value} </code>`
+       }
+      }
+      if (isProfileRadio.checked) {
+       if ( (input.name === "Имя Профиля" ||  input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля") ) {
+        post_txt_code_items.innerHTML += `<code class="post-text-body-code-item" id="post-txt-code-item">${input.name}: ${input.value} </code>`
+       }
+      }
+      
+      
+    })
+    console.log("Пост создан!")
+}
+
