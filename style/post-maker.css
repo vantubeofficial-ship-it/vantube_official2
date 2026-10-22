@@ -1,0 +1,87 @@
+.post-maker-item {
+   display: flex;
+   flex-direction: column; 
+   border: 0.1em solid rgb(54, 54, 54);;
+   border-radius: 1em;
+}
+
+.post-maker-item > .post-text-body {
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+ margin-top: 1em;
+}
+
+.post-maker-item > .post-maker-head-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-bottom:  0.1em solid rgb(54, 54, 54);
+}
+
+.post-maker-item  > .post-text-body > #post-maker-form {
+    display: flex;
+ flex-direction: column;
+ justify-content: center;
+}
+
+.post-maker-item  > .post-text-body > #post-maker-form > .post-mkr-frm-input-items> input {
+    border-radius: 1em;
+    border-style: solid;
+    border-color: rgb(54, 54, 54);
+    margin: 0.5em;
+    padding: 0.25em;
+}
+
+.post-maker-item  > .post-text-body > #post-maker-form > .post-mkr-frm-input-items> input:focus{
+    transform: scale(0.95);
+    background-color: #bfdbee;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+}
+
+.post-maker-item  > .post-text-body > #post-maker-form > .post-maker-button-item {
+    display: flex;
+    justify-content: center;
+}
+.post-maker-item  > .post-text-body > #post-maker-form > .post-maker-button-item > button {
+ border-radius: 1em;
+ box-shadow: none;
+ outline: none;
+ border-style: solid;
+ border-color: rgb(54, 54, 54);
+ padding: 0.25em;
+ width: 5em;
+ margin: 1em;
+}
+
+.post-maker-item  > .post-text-body > .post-text-body-code-items > code {
+    color: rgb(0, 0, 0);
+    font-weight: normal;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-right: 1em ;
+}
+
+@media (max-width: 1000px) {
+    
+    
+    
+    .post-maker-item > .post-maker-head-panel  {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .post-maker-head-panel > .post-mkr-r-item  {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;  
+    }
+
+     .post-maker-item > .post-text-body {
+        flex-direction: column;
+     }
+
+     .post-maker-item  > .post-text-body > #post-maker-form > .post-mkr-frm-input-items> input {
+      width: 95%;
+     }
+    }
