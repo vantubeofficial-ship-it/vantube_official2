@@ -1,10 +1,30 @@
 /*Страница с лентой рекомендаций видео*/
 
 
+.main-container {
+    display: flex;
+  flex-direction: row;
+  gap: 24px;
+  max-width: 1750px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.main-container.full-screen-mode {
+ margin: 0;
+ max-width: 100%;
+ width: 100%;
+ height: 100%;
+ padding: 0;
+}
 .video-column-container> .row {
     justify-content: center;
     align-items: center;
     margin: 0;
+}
+
+.video-container {
+    width: 70%;
 }
 
 .vantube-video-container {
@@ -56,10 +76,12 @@
     width: 200px;
     height: 125px;
 }
-.main-container {
-    display: flex;
-    flex-direction: row;
+
+.video-container {
+    flex: 1;
+    min-width: 0;
 }
+
 
 .vantube-logo {
     display: flex;
@@ -67,52 +89,57 @@
 }
 
 .vantube-logo>img {
-    width: 40px;
+    width: 45px;
     margin: 0.5em;
+    height: 35px;
 }
 
 .video-container>.video-view-container {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: left;
-    height: 40em;
     align-items: left;
-    padding: 0.5em;
     border-style: solid;
     border-color: rgb(17, 17, 17);
     border-radius: 10px;
-    margin: 1em;
-    max-width: 50em;
     background-color: rgb(34, 34, 34);
     ;
 }
 
 .video-container>.video-view-container {
     display: flex;
-    height: 30em;
     flex-direction: column;
     justify-content: left;
     align-items: left;
     border-style: solid;
     border-radius: 10px;
-    margin: 1em;
-    max-width: 50em;
 }
 
+.video-container>.video-view-container.full-screen-mode {
+    margin: none;
+    border-radius: 0px;
+    width: 100%;
+    border-style: none;
+} 
+
 .video-container>.video-view-container>.vantube-video-item {
+    width: 100%;
     display: flex;
     justify-content: center;
+    height: 80%;
+    position: relative;
 }
 
 .video-container>.video-view-container>.vantube-video-item>video {
-    height: 350px;
-    width: 700px;
+    width: 100%;
 }
 
 .video-container>.video-view-container>.video-controls {
     display: flex;
     align-items: center;
     margin: 1em;
+    height: 10%;
 }
 
 .video-controls>button {
@@ -128,14 +155,16 @@
 
 #video-progress {
     display: flex;
-    align-items: center;
-
+    align-items: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 #video-progress>#video-proggressbar-slider {
     width: 100%;
     accent-color: rgb(23, 43, 224);
-    margin: 0.25em;
 }
 
 #volume-range-slider {
@@ -146,42 +175,43 @@
     color: white;
 }
 
-.video-container>.head {
+.video-container> .video-description-items {
+    height: 40%;
+}
+
+.video-container> .video-description-items>.head {
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: rgb(201, 201, 201);
     border-radius: 5px;
-    max-width: 50em;
 }
 
-.video-container >.head> h2 {
+.video-container > .video-description-items>.head> h2 {
  margin: 5px;
 }
 
-.video-container>.head>p {
+.video-container> .video-description-items>.head>p {
     margin: 5px;
+    width: 100%;
 }
 
 .recommendations-bar {
+    width: 402px;
     display: flex;
-    border-style: solid;
-    border-color: rgb(17, 17, 17);
-    ;
-    width: 100%;
-    margin-block: 1em;
     flex-direction: column;
+    gap: 8px;
     justify-content: center;
     align-items: center;
 }
 
 .recomm-bar-item>a {
-    text-decoration: none;
     display: flex;
     width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: left;
+    align-items: start;
+    text-decoration: none;
 }
 
 .recomm-bar-item>a>.video-preview {
@@ -189,50 +219,41 @@
 }
 
 .recomm-bar-item>a>.video-preview>img {
-    width: 10em;
+    width: 14em;
     height: 9em;
+    border-radius: 0.3em;
 }
 
-.recomm-bar-item>a>.video-name>h5 {
-    text-align: center;
+.recomm-bar-item>a>.video-name {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 1em;
+}
+
+.recomm-bar-item>a>.video-name>span {
+    text-align: left;
+    font-weight: bold;
+    font-size: 1em;
 }
 
 #video-time {
     margin-inline: 5em;
 }
 
-@media (max-width: 1000px) {
-    .recomm-bar-item>a>.video-preview>img {
-        width: 15em;
-    }
-
-    .video-container>.video-view-container>.vantube-video-item>video {
-        height: 340px;
-        width: 680px;
-
-    }
+@media (max-width: 1435px) {
     
     #volume-range-slider {
     width: 5em;
 }
 
-  #video-progress>#video-proggressbar-slider {
-    width: 100%;
-    margin: 0.15em;
 }
 
+@media (max-width: 1201px) {
+    
+    #volume-range-slider {
+    width: 5em;
 }
 
-@media (max-width: 900px) {
-    .recomm-bar-item>a>.video-preview>img {
-        width: 14em;
-    }
-
-    .video-container>.video-view-container>.vantube-video-item>video {
-        height: 320px;
-        width: 640px;
-
-    }
 }
 
 @media (max-width: 950px) {
@@ -244,19 +265,30 @@
         background-color: rgb(201, 201, 201);
         border-radius: 5px;
     }
+    
+     .recomm-bar-item>a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
 
     .main-container {
         flex-direction: column;
     }
+
+    .video-container {
+        width: 100%;
+    }
+
+    .recommendations-bar {
+        width: 100%;
+    }
 }
 
-@media (max-width: 800px) {
-
-    .video-container>.video-view-container>.vantube-video-item>video {
-        height: 260px;
-        width: 520px;
-
-    }
+@media (max-width: 912px) {
 
     .video-container>.head {
         display: flex;
@@ -268,20 +300,13 @@
 
     #video-time {
     margin-inline: 2.5em;
-}
-}
-
-@media (max-width: 500px) {
-
-    .video-container>.video-view-container>.vantube-video-item>video {
-        height: 200px;
-        width: 400px;
-
     }
 
-    #volume-range-slider {
-        display: none;
-    }
+
+
+
+}
+@media (max-width: 600px) {
 
     .video-container>.head {
         display: flex;
@@ -289,5 +314,20 @@
         justify-content: left;
         background-color: rgb(201, 201, 201);
         border-radius: 5px;
+    }
+
+    .recomm-bar-item>a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+}
+
+@media (max-width: 500px) {
+#volume-range-slider {
+        display: none;
     }
 }
