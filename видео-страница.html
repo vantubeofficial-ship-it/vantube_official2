@@ -71,26 +71,29 @@
                         <h2>VanTube</h2>
                     </div>
                     <div class="vantube-video-item" id="vantube-video-item">
-                        <video id="vantube-video" src="#" poster="#"></video>
-                    </div>
-                    <div class="video-controls">
-                        <button id="video-play-button"><img id = "video-play-button-image" src="style/video_in_vantube/style/vantube video player/play button active.png" alt=""></button>
+                        <video id="vantube-video" src="#" poster="#" ></video>
                         <div id="video-progress">
                             <input type="range" id="video-proggressbar-slider">
                         </div>
-                        <p id="video-time"><span id="current-time"></span> / <span id="duration-time"></span></p>
+                    </div>
+                    <div class="video-controls">
+                        <button id="video-play-button"><img id = "video-play-button-image" src="style/video_in_vantube/style/vantube video player/play button active.png" alt=""></button>
                         <button id="volume-muted"><img id="volume-muted-image" src="style/video_in_vantube/style/vantube video player/volume button unmute.png" alt=""></button>
                         <input type="range" id="volume-range-slider" min="0" max="1" step="0.1" value="0">
+                        <p id="video-time"><span id="current-time"></span> / <span id="duration-time"></span></p>
+                        <button id="video-full-screen-button-toggler"><img id = "video-play-button-image" src="style/video_in_vantube/style/vantube video player/full screen toggler-button.png" alt=""></button>
                     </div>
                 </div>
-                <div class="author" id="author">
+                <div class="video-description-items">
+                 <div class="author" id="author">
             
-                </div>
-                <div class="head" id="head">
+                 </div>
+                 <div class="head" id="head">
             
-                </div>
+                 </div>
             </div>
-            <div class="recommendations-bar" id="recomm-bar">
+            </div>
+            <aside class="recommendations-bar" id="recomm-bar">
                 <h4>Рекомендации(beta)</h4>
                 <div class="recomm-bar-item">
                  <div class="video-preview">
@@ -100,25 +103,31 @@
                      <h5>Название видео</h5>
                  </div>
                 </div>
-            </div>
+            </aside>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
         <script src="VanTube datebase.js"></script>
         <script>
     /*Часть скрипта для загрузки данных для видео*/
+            // Главные контейнеры на странице и сам видео-контейнер 
             const video_container = document.getElementById("video-container");
             const recomm_bar = document.getElementById("recomm-bar")
             const vantube_video = document.getElementById("vantube-video")
+            // Основные элементы контейнера видео (автор, описание, текущее время и продолжительность видео)
             const author = document.getElementById("author")
             const head = document.getElementById("head")
             const video_time = document.getElementById("video-time")
             const current_time = document.getElementById("current-time")
             const duration_time = document.getElementById("duration-time")
+            // Часть кода, нужная для загрузки данных видео из query-параметров
             const search = new URLSearchParams(window.location.search);
             const id = Number(search.get('id'));
             const video = VideoDatabase[id-1];
+            // Обработчики 
+            // 1. Код для загрузки метаданных 
             vantube_video.addEventListener("loadedmetadata", () => {
                 const full_time = vantube_video.duration;
+                // Функция для рассчета продолжительности видео (принимает в качестве параметра только число секунд)
                 const ViewFullTime = function(time) {
                     const hours = Math.floor(time / 3600);
                     const minutes = Math.floor((time % 3600) / 60);
@@ -135,8 +144,9 @@
                     }
                 }
                 
-                duration_time.innerHTML = ViewFullTime(full_time)
+                duration_time.innerHTML = ViewFullTime(full_time) // вызов нашей функции (в качестве аргумента продолжительность видео)
             })
+            // 2. Код для загрузки данных видео из базы (автора, путь к файлу видео, описания, и данных на панели рекомендаций)
             window.addEventListener("load", function () {
                 vantube_video.src = video.src; vantube_video.poster = video.poster;
                 author.innerHTML = 
@@ -153,23 +163,28 @@
                         <img src="${video.poster}" id="video-preview-img" alt="">
                       </div>
                       <div class="video-name">
-                         <h6>${video.name}</h6>
+                         <span>${video.name}</span>
                       </div>
                   </a>
                 </div>`}
                 })
             })
     /*Часть скрипта для функционирования видео-плеера*/
+        // Основные элементы управления видео (кнопка паузы и переключателя звука, ползунок прогресса и звука)
         const video_play_button = document.getElementById("video-play-button")
         const video_proggressbar_slider = document.getElementById("video-proggressbar-slider")
         const volume_muted = document.getElementById("volume-muted")
         const volume_range_slider = document.getElementById("volume-range-slider")
+        const video_full_screen_button_toggler = document.getElementById("video-full-screen-button-toggler")
+        // Путь к изображению кнопки паузы и переключателя звука (в выключенном и включенном положении)
         const video_play_button_image = document.getElementById("video-play-button-image")
         const button_active = "style/video_in_vantube/style/vantube video player/play button active.png"
         const button_paused = "style/video_in_vantube/style/vantube video player/play button paused.png"
         const volume_muted_image = document.getElementById("volume-muted-image")
         const img_muted = "style/video_in_vantube/style/vantube video player/volume button mute.png"
         const img_unmuted = "style/video_in_vantube/style/vantube video player/volume button unmute.png"
+        let full_screen_mode_value = false 
+        // Обработчик нажатия кнопки паузы
         video_play_button.addEventListener("click", function() {
             if(vantube_video.paused === true) {
                 vantube_video.play()
@@ -196,16 +211,19 @@
                         return `${format_minutes}:${format_seconds}`
                     }
                 }
+        // Обновление пройденного пути ползунка видео и значения текущего времени в зависимости от текущего времени
         vantube_video.addEventListener("timeupdate", function () {
             const video_current_time = vantube_video.currentTime
             const progress = (vantube_video.currentTime / vantube_video.duration) * 100
             video_proggressbar_slider.value = progress
             current_time.innerHTML = ViewCurrentTime(video_current_time)
         })
+        // Обновление текущего времени видео при ручном передвижении ползунка видео 
         video_proggressbar_slider.addEventListener("input", function () {
             const newTime = (video_proggressbar_slider.value / 100 )* vantube_video.duration;
             vantube_video.currentTime = newTime;
         })
+        // Обработчик нажатия кнопки вкл/выкл звука и передвижения ползунка звука
         volume_muted.addEventListener("click", function() {
            if (vantube_video.volume > 0) {
             vantube_video.volume = 0; volume_range_slider.value = 0; volume_muted_image.src = img_muted}
@@ -221,6 +239,27 @@
             else {
                 volume_muted_image.src = img_muted
             }
+        })
+        //Обработчик событий переключателя полного экрана
+        video_full_screen_button_toggler.addEventListener("click", () => {
+          if (!full_screen_mode_value) {
+           full_screen_mode_value = (!full_screen_mode_value)
+           document.querySelector("header").style.display = "none"
+           document.querySelector("footer").style.display = "none"
+           document.querySelector(".video-description-items").style.display = "none"
+           recomm_bar.style.display = "none"
+           document.querySelector(".main-container").classList.add("full-screen-mode")
+           document.querySelector(".video-view-container").classList.add("full-screen-mode")
+        }
+        else {
+         full_screen_mode_value = (!full_screen_mode_value)
+           document.querySelector("header").style.display = "block"
+           document.querySelector("footer").style.display = "block"
+           document.querySelector(".video-description-items").style.display = "block"
+           recomm_bar.style.display = "flex"
+           document.querySelector(".main-container").classList.remove("full-screen-mode")
+           document.querySelector(".video-view-container").classList.remove("full-screen-mode")    
+        }
         })
         </script>
     </section>

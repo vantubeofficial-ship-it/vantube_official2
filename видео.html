@@ -101,6 +101,7 @@
                     crossorigin="anonymous"></script>
                 <script src="VanTube datebase.js"></script>
                 <script>
+                    //Получает весь список видео из базы и выводит контейнеры с ними на экран
                     const video_column_container = document.getElementById("video-column-container");
                     window.addEventListener("load", function () {
                         VideoDatabase.forEach(video => {
