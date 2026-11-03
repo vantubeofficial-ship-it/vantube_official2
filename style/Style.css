@@ -1,11 +1,68 @@
 /* Главное */
-p {margin: auto auto;}
-body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-h2 {font-size: larger;margin: 10px;}
-image{size: 1px}
-h1{text-align: center;}
+
+/*CSS переменные*/
+
+:root {
+    --vantube-bg-color--: white;
+    --vantube-txt-color--: black;
+    --vantube-font-family--: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --vantube-span-font-w--: bold;
+    --vantube-link-color--: rgb(0, 140, 255);
+    --vantube-link-dec--: none;
+    --vantube-border-s--: 0.125em solid rgb(54, 54, 54);
+    --vantube-border-r--: 0.5em;
+    --vantube-footer-bg-color--: rgb(54, 54, 54);
+    --vantube-vid-card-bg-color--: white;
+    --vantube-vid-card-border-color--: rgb(224, 224, 224);
+    --vantube-table-bg-color--: rgb(165, 165, 165);
+    --vantube-table-border-style--: 0.1em solid rgb(224, 224, 224);
+    --vantube-inv-text-bg-color--: rgb(165, 165, 165);
+    --vantube-btn-color--: rgb(54, 54, 54);
+    --vantube-bs-and-outline-s--: none;
+    --vantube-m-i--: 0.5em;
+}
+
+[data-theme="dark"] {
+    --vantube-bg-color--: rgb(32, 32, 32);
+    --vantube-txt-color--: white;
+    --vantube-border-s--: 0.1em solid rgb(54, 54, 54);
+    --vantube-border-r--: 0.5em;
+    --vantube-footer-bg-color--: rgb(54, 54, 54);
+    --vantube-vid-card-bg-color--: rgb(54, 54, 54);
+    --vantube-vid-card-border-color--: rgb(28, 28, 28);
+    --vantube-table-bg-color--: rgb(28, 28, 28);
+    --vantube-table-border-style--: 0.1em solid rgb(54, 54, 54);
+    --vantube-inv-text-bg-color--: rgb(54, 54, 54);
+    --vantube-btn-color--: rgb(54, 54, 54);
+    --vantube-bs-and-outline-s--: none;
+    --vantube-m-i--: 0.5em;
+}
+
+
+/*Основные элементы страницы*/
+
+html>body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--vantube-txt-color--);
+    background-color: var(--vantube-bg-color--);
+}
+
+p {
+
+    margin: auto auto;
+}
+
+a {
+    color: var(--vantube-link-color--);
+    text-decoration: var(--vantube-link-dec--);
+}
+
+h1 {
+    text-align: center;
+}
+
 .inversed-text {
-    background-color: rgb(54, 54, 54); 
+    background-color: var(--vantube-inv-text-bg-color--);
     color: white;
     padding-block: 0.5em;
     border-radius: 0.2em;
@@ -13,67 +70,159 @@ h1{text-align: center;}
     display: inline;
     margin: 0.5em;
 }
-span {font-weight: bold;
-padding: 0;}
-.span-inversed-text {
-    background-color: rgb(54, 54, 54); 
-    color: white;
-    padding-block: 0.1em;
-    padding-inline: 0.2em;
-    border-radius: 0.2em;
-    text-align: center;
-    display: inline;  
-}
-/* Домашняя страница */
 
+span {
+    padding: 0;
+    font-weight: bold;
+}
+
+button {
+    color: var(--vantube-txt-color--);
+    box-shadow: var(--vantube-bs-and-outline-s--);
+    background-color: var(--vantube-bg-color--);
+    outline: var(--vantube-bs-and-outline-s--);
+    border: var(--vantube-border-s--);
+    margin-inline: var(--vantube-m-i--);
+    padding: 0.25em;
+    border-radius: calc(var(--vantube-border-r--) + var(--vantube-border-r--));
+}
+
+button.clicked {
+    transform: scale(0.95);
+    background-color: #94bdd8;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+input {
+    border-radius: 1em;
+    border: var(--vantube-border-s--);
+    margin-inline: var(--vantube-m-i--);
+    padding: 0.25em;
+}
+
+input:focus {
+    transform: scale(0.95);
+    background-color: #bfdbee;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/*Футер*/
+
+footer {
+    position: relative;
+    width: 100%;
+    top: 300px;
+}
+
+.footer-object {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--vantube-footer-bg-color--);
+    color: white;
+}
+
+
+.footer-object>#links-footer,
+#uridic-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    ;
+}
+
+#links-footer {
+    margin-right: 10px;
+}
+
+#uridic-info>p {
+    margin: 12px;
+}
+
+.footer-object #links-footer>a>img {
+    width: 25px;
+    margin: auto 5px;
+}
+
+/* ## Домашняя страница */
+
+.vantube-main {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.vantube-main.video-container {
+    display: inline;
+}
+
+/*Баннер*/
 .header-banner {
     padding: 15px;
     text-align: center;
     font-size: medium;
-    border: solid;
+    border-style: solid;
     border-color: rgb(54, 54, 54);
     font-weight: bold;
 }
 
-.text-page {
- text-align: center;
+/*Главная информация о сайте (вверху)*/
+.v-head-info {
+    text-align: center;
 }
 
-.title {
- text-align: center;
-}
-
+/*Таблица с плюсами сайта*/
 .table-object {
- display: block;  
- text-align: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
 }
 
-.table {
- display: flex;
- justify-content: center;
- align-items: center;
+.v-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4em;
+    background-color: var(--vantube-table-bg-color--);
+    border: var(--vantube-table-border-style--);
+    color: white;
+    width: 40%;
 }
 
-.table>.column {
- display: block;
- text-align: center;
- align-items: center;
- padding: 10px;
- margin: 10px;
- border: solid;
- border-color: rgb(54, 54, 54);
- width: 200px;
- height: 100px;
+.v-table>.v-table-caption {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    border-bottom: var(--vantube-table-border-style--);
 }
 
-.table> .column > p {
- margin: auto auto;
+.v-table>.v-table-body {
+    width: 100%;
 }
 
+.v-table>.v-table-body>.v-table-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.v-table>.v-table-body>.v-table-row>.v-table-column {
+    text-align: center;
+    align-items: center;
+    width: 33%;
+}
+
+/*Ссылки (между каталогом видео и верхней частью тела сайта)*/
 .link {
- text-align: center;
+    text-align: center;
 }
 
+/*Каталог видео*/
 .video-catalog {
     display: flex;
     flex-direction: column;
@@ -97,138 +246,158 @@ padding: 0;}
     align-items: center;
     padding: 0.5em;
     border-style: solid;
-    border-color: rgb(54, 54, 54);
-    border-radius: 10px;
+    border-color: var(--vantube-vid-card-border-color--);
+    border-radius: var(--vantube-border-r--);
     margin: 0.9em;
+    background-color: var(--vantube-vid-card-bg-color--);
 }
 
-.video-item > .head > a {
- text-decoration: none;
- color: rgb(0, 140, 255);
+.video-item>.head>a {
+    text-decoration: none;
+    color: rgb(0, 140, 255);
 }
 
-.video-item > .video-preview > a > img {
+.video-item>.video-preview>a>img {
     width: 14em;
     height: 9em;
 }
-/*Обратная связь*/
 
-.about-page > p{
- margin: 10px;   
+/*Анимации*/
+
+.vantube-logo-in-headers {
+    animation: V-anim 10s cubic-bezier(0.11, 0, 0.5, 0) 0s infinite normal forwards;
+    width:  40px;
+    height: 30px;
+}
+
+@keyframes V-anim {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+        transform-origin: 50% 50%;
+    }
+
+    10% {
+        transform: rotate(8deg);
+    }
+
+    20%,
+    40%,
+    60% {
+        transform: rotate(-10deg);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: rotate(10deg);
+    }
+
+    80% {
+        transform: rotate(-8deg);
+    }
+
+    90% {
+        transform: rotate(8deg);
+    }
+}
+
+/* ## Обратная связь */
+
+.about-page>p {
+    margin: 10px;
 }
 
 .contact-information>ul {
- display: flex;
- flex-direction: column;
- list-style: none;
- justify-content: center;
- margin: 0;
- padding: 0;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
 .contact-information>ul>li {
- margin: 1em;
- font-size: 1em;
- text-align: center;
+    margin: 1em;
+    font-size: 1em;
+    text-align: center;
 }
 
 .contact-information>ul>li>a {
- text-decoration: none;
+    text-decoration: none;
 }
 
-.contact-information>ul>li>a>img { 
- width: 1.5em;
- margin-right: 1em;
+.contact-information>ul>li>a>img {
+    width: 1.5em;
+    margin-right: 1em;
 }
 
-/*Футер*/
+/*Страница с другими сервисами*/
 
-footer {
- position: relative;
- width: 100%;
- top: 300px;
+.apps-container>.row {
+    justify-content: center;
 }
 
-.footer-object {
- display: flex;
- flex-direction: row;
- justify-content: space-between;
- background-color: rgb(54, 54, 54);
- color: white;
+.app-container {
+    flex-direction: column;
+    margin-block: 20px;
+    border-radius: var(--vantube-border-r--);
+    border: var(--vantube-border-s--);
+    border-width: var(--vantube-border-s--);
 }
 
-
-.footer-object > #links-footer, #uridic-info  {
- display: flex;
- flex-direction: row;
- justify-content: center;
- align-items: center;
- margin-left: 10px; ;
+.app-container>a {
+    display: flex;
+    text-decoration: none;
+    padding: 5px;
+    align-items: center;
 }
 
-#links-footer {
- margin-right: 10px;
-}
+.app-container>a>img {
+    width: 100%;
+    border-radius: 10px;
 
-#uridic-info > p {
- margin: 12px ;
-}
-
-.footer-object #links-footer > a > img {
- width: 25px;
- margin: auto 5px;
 }
 
 /*Медиа-запросы*/
 
 @media (max-width:1250px) {
-    .video-item > .video-preview > a > img {
+    .video-item>.video-preview>a>img {
         width: 10em;
         height: 7em;
     }
 }
 
-@media (max-width: 800px) {
-    .footer-object #links-footer > a > img {
-           width: 50px;
-           margin: auto 5px;
-    }  
-}
-   
-   @media (max-width: 510px) {
-       
-   .table {
-       display: flex;
-       flex-direction: column;
-   }
-   
-   .footer-object #links-footer > a > img {
-       width: 40px;
-       margin: auto 10px;
-   }  
-}
-
-    .apps-container > .row {
-        justify-content: center;
+@media (max-width: 845px) {
+    .footer-object #links-footer>a>img {
+        width: 50px;
+        margin: auto 5px;
     }
 
-   .app-container {
-    flex-direction: column;
-    background-color: rgb(207, 206, 206);
-    margin-block: 20px;
-    border-radius: 10px;
-    border-style: solid;
-}
-   
-.app-container > a {
-  display: flex;
-  text-decoration: none;
-  padding: 5px;
-  align-items: center;
+    .v-table>.v-table-body>.v-table-row {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .v-table>.v-table-body>.v-table-row>.v-table-column {
+        text-align: center;
+        align-items: center;
+        width: 100%;
+        border-bottom: var(--vantube-table-border-style--);
+    }
 }
 
-.app-container > a > img {
-    width: 100%;
-    border-radius: 10px;
+@media (max-width: 510px) {
 
+    .table {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-object #links-footer>a>img {
+        width: 40px;
+        margin: auto 10px;
+    }
 }

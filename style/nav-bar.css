@@ -1,5 +1,20 @@
+:root {
+ --vantube-navbar-border-color--: rgb(44, 44, 247);
+}
+
+/*Основные настройки панели*/
+#nav-bar_list > .nav-item {
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+
+
 #nav-bar_list > .nav-item > .nav-link {
  color: white;
+}
+#nav-bar_list > .nav-item > .nav-link:hover{
+  color:  rgb(101, 101, 250);
 }
 
 .navbar-collapse > #nav-bar_list > .nav-item > .nav-link.active {
@@ -10,7 +25,11 @@
  width: 40px;
 }
 
-.navbar-toggler > .navbar-toggler-icon > {
+.navbar-toggler {
+    color: var(--vantube-navbar-border-color--)
+}
+
+.navbar-toggler > .navbar-toggler-icon {
  display: flex;
  justify-content: center;
  align-items: center;
@@ -18,4 +37,12 @@
 
 .navbar-toggler > .navbar-toggler-icon > img {
  width: 40px;
+}
+
+/*Стиль контейнера с переключателем тем*/
+
+.nav-item.theme-toggle-button-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }

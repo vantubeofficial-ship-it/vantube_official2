@@ -1,5 +1,15 @@
-/*Страница с лентой рекомендаций видео*/
+/*Основные CSS переменные*/
+:root {
+--vantube-vid-name-color--: rgb(54, 54, 54);
+--vantube-vid-item-h-bg-color--: rgb(231, 229, 229);
+--vantube-vid-i-border-s--: 0.2em solid rgb(54, 54, 54);
+} [data-theme="dark"] {
+--vantube-vid-name-color--: rgb(254, 254, 254);
+--vantube-vid-item-h-bg-color--: rgb(75, 75, 75);
+--vantube-vid-i-border-s--: 0.2em solid rgb(84, 84, 84);
+}
 
+/*Страница с лентой рекомендаций видео*/
 
 .main-container {
     display: flex;
@@ -23,6 +33,12 @@
     margin: 0;
 }
 
+.video-items {
+    display: flex ;
+    flex-direction: row;
+}
+
+
 .video-container {
     width: 70%;
 }
@@ -30,16 +46,23 @@
 .vantube-video-container {
     display: flex;
     flex-direction: column;
-    border-style: solid;
-    border-color: rgb(54, 54, 54);
+    border-style: none;
     border-radius: 10px;
     justify-content: center;
     text-align: center;
     align-items: center;
     margin-block: 1em ;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: 1.6em;
 }
 
-.vantube-video-container > a {
+.vantube-video-container:hover {
+    background-color: var(--vantube-vid-item-h-bg-color--);
+}
+
+
+.vantube-video-container > .video-link-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,14 +71,16 @@
     text-decoration: none;
 }
 
-.vantube-video-container > .text-header > a{
+.vantube-video-container > .video-link-item > .video-name-item{
     text-decoration: none;
+    color: var(--vantube-vid-name-color--);
 }
 
-.vantube-video-container > .video-poster > img {
+.video-poster > img {
     display: flex;
-    width: 200px;
-    height: 125px;
+    border-radius: 0.5em;
+    width: 300px;
+    height: 200px;
     justify-content: center;
     align-items: center;
     margin: 10px;  
@@ -67,7 +92,7 @@
     height: 125px;
     justify-content: center;
     align-items: center;
-    margin: 10px;  
+    margin: 10px; 
 }
 
 /*Страница для просмотра видео*/
@@ -85,7 +110,6 @@
 
 .vantube-logo {
     display: flex;
-    color: white;
 }
 
 .vantube-logo>img {
@@ -95,16 +119,14 @@
 }
 
 .video-container>.video-view-container {
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: left;
     align-items: left;
     border-style: solid;
-    border-color: rgb(17, 17, 17);
+    border-color: var(--vantube-vid-i-border-s--);
     border-radius: 10px;
-    background-color: rgb(34, 34, 34);
-    ;
+    position: relative;
 }
 
 .video-container>.video-view-container {
@@ -128,37 +150,68 @@
     display: flex;
     justify-content: center;
     height: 80%;
+    overflow: hidden; 
+    border-radius: 12px; 
     position: relative;
 }
 
 .video-container>.video-view-container>.vantube-video-item>video {
     width: 100%;
+    display: block;
 }
 
 .video-container>.video-view-container>.video-controls {
     display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    justify-content: space-between;
     align-items: center;
-    margin: 1em;
-    height: 10%;
+    margin-block: 1em;
+    height: 15%;
+    width: 100%;
 }
 
-.video-controls>button {
+.video-controls> .lower-controls-menu-items {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.video-controls> .lower-controls-menu-items > .control-menu {
+    display: flex;
+    width: 100%;
+}
+
+.control-menu.right {
+    width: 8%;
+    justify-content: right;
+}
+
+
+.control-menu.left {
+    width: 92%;
+}
+
+.video-controls> .lower-controls-menu-items > .control-menu > button {
     background: none;
     border-style: none;
 }
 
-.video-controls>button>img {
-    width: 2em;
-    height: 2em;
+.video-controls> .lower-controls-menu-items > .control-menu > button>img {
+    width: 1.5em;
+    height: 1.5em;
 
+}
+
+.video-controls> .head-controls-menu-items {
+    width: 100%;
 }
 
 #video-progress {
     display: flex;
     align-items: left;
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
 }
 
@@ -171,9 +224,12 @@
     width: 5em;
 }
 
-#video-time {
+.control-menu.left > #video-time {
     color: white;
+    margin-inline: 0.1em;
 }
+
+
 
 .video-container> .video-description-items {
     height: 40%;
@@ -183,7 +239,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgb(201, 201, 201);
+    border: var(--vantube-vid-i-border-s--);
     border-radius: 5px;
 }
 
@@ -203,6 +259,15 @@
     gap: 8px;
     justify-content: center;
     align-items: center;
+}
+
+.recomm-bar-item {
+    border-radius: 0.5em;
+    padding: 0.5em;
+}
+
+.recomm-bar-item:hover {
+    background-color: #e7e5e5;
 }
 
 .recomm-bar-item>a {
@@ -228,12 +293,14 @@
     display: flex;
     flex-wrap: wrap;
     margin-left: 1em;
+    justify-content: center;
 }
 
 .recomm-bar-item>a>.video-name>span {
     text-align: left;
     font-weight: bold;
     font-size: 1em;
+    display: flex;
 }
 
 #video-time {
@@ -244,19 +311,33 @@
     
     #volume-range-slider {
     width: 5em;
+
+    .vantube-video-container {
+     font-weight: 300;
+     font-size: 0.5em;   
+    }
+
 }
 
+}
+
+@media (max-width:1260px) {
+    .video-poster > img {
+    width: 245px;
+    height: 145px;
+}
 }
 
 @media (max-width: 1201px) {
     
     #volume-range-slider {
     width: 5em;
-}
 
 }
 
-@media (max-width: 950px) {
+}
+
+@media (max-width: 980px) {
 
     .video-container>.head {
         display: flex;
@@ -274,6 +355,10 @@
       flex-wrap: wrap;
     }
 
+    .video-poster > img {
+    width: 300px;
+    height: 200px;
+}
 
     .main-container {
         flex-direction: column;
