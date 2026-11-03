@@ -10,6 +10,7 @@
     <meta property="og:image" content="style/VanTube logo.png">
     <meta property="og:url" content="https://vantubeofficial-ship-it.github.io/vantube_official/поиск.html">
     <meta property="og:type" content="website">
+    <meta property="og:name" content="VanTube Official">
     <title>Поиск</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="style\Style.css" />
@@ -63,12 +64,13 @@
     </header>
 
     <section>
+    <div class="vantube-main">
         <div class="header-banner">
             <a href="">
                 <p></p>
             </a>
         </div>
-        <div class="text-page">
+        <div class="v-main-body">
             <h1><img src="style/VanTube logo (Head page).png" alt="логотип VanTube">Введите название страницы или видео для просмотра</h1> 
             <div class="view-search-result" id="view-search-result">
                 <div id="search-control">
@@ -93,6 +95,8 @@
                     </div>
             </div>
         </div>
+    </div>
+        </section>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
         <script src="VanTube datebase.js"></script>
         <script>
@@ -104,86 +108,9 @@
                                 
                             </a>
                         </div>*/
-            const input_search = document.getElementById("input-search").value
-            const search_button = document.getElementById("search-action-button")
-            const input_search_page = document.getElementById("input-search-page") 
-            const input_search_video = document.getElementById("input-search-video")
-            const input_search_news = document.getElementById("input-search-news")
-            const search_list = document.getElementById("search-list")
-            input_search_page.addEventListener("click", function () {
-                input_search_page.checked = true
-                input_search_video.checked = false
-                input_search_news.checked = false
-            })
-            input_search_video.addEventListener("click", function () {
-                input_search_video.checked = true
-                input_search_page.checked = false
-                input_search_news.checked = false
-            })
-            input_search_news.addEventListener("click", function () {
-                input_search_news.checked = true
-                input_search_page.checked = false
-                input_search_video.checked = false
-            })
-            search_button.addEventListener("click", function () {
-                this.classList.add("clicked");
-                setTimeout(() => {
-                    this.classList.remove('clicked')
-                }, 200)
-                if (input_search_page.checked === true) {
-                    search_list.innerHTML = ``
-                    PageDatabase.forEach(page => {
-                    if (page.name.includes(input_search)) {
-                        search_list.innerHTML += `
-                        <div class="search-list-item">
-                            <a href="${page.url}">
-                                <img class="page-preview" src="style/VanTube News Preview.png" alt="">
-                                <h4>${page.name}</h4>
-                                <p class="search-list-item-description">${page.description}</p>
-                                
-                            </a>
-                        </div> 
-                        `
-                    }
-                });
-                }
-                if (input_search_video.checked === true) {
-                    search_list.innerHTML = ``
-                    VideoDatabase.forEach(video => {
-                    if (video.name.includes(input_search)) {
-                        search_list.innerHTML += `
-                        <div class="search-list-item">
-                            <a href="${video.src}">
-                                <img class="video-preview" src="${video.poster}" alt="">
-                                <h4>${video.name}</h4>
-                                <p class="search-list-item-description">${video.description}</p>
-                                
-                            </a>
-                        </div> 
-                        `
-                    }
-                });
-                }
-                if (input_search_news.checked === true) {
-                    search_list.innerHTML = ``
-                    NewsDatabase.forEach(news => {
-                    if (news.headers.includes(input_search)) {
-                        search_list.innerHTML += `
-                        <div class="search-list-item">
-                            <a href="новость.html?id=${news.id}">
-                                <img class="news-preview" src="${news.preview}" alt="">
-                                <h4>${news.headers}</h4>
-                                <p class="search-list-item-description">${news.text.slice(0,30) + "..."}</p>
-                                
-                            </a>
-                        </div> 
-                        `
-                    }
-                });
-                }
-            })
+             searchVantubeContent()
+            
         </script>
-    </section>
 
     <footer>
         <div class="footer-object">

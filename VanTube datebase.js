@@ -111,6 +111,8 @@
     <p></p>`, data: "22.10.2026"
 }
 ];
+
+
 const PageDatabase = [{ id: "1", name: "Главная страница (index)", description: "Главная страница сайта VanTube, здесь вы можете узнать основную информацию о нашем сервисе VanTube", url: "index.html" },
 { id: "2", name: "Обратная связь", description: "Ссылки на наши аккаунты в других сервисах", url: "обратная связь.html" },
 { id: "3", name: "О нас (about)", description: "Здесь мы можете узнать дополнительную информацию и историю о VanTube", url: "о нас.html" },
@@ -119,10 +121,15 @@ const PageDatabase = [{ id: "1", name: "Главная страница (index)"
 { id: "6", name: "Другие сервисы", description: "Информация и ссылки на другие сервисы VanTube Inc", url: "другие сервисы.html" },
 { id: "7", name: "Видео", description: "Страница с рекомендованными видео для просмотра", url: "видео.html" }];
 
-const VideoDatabase = [{ id: "1", name: "Windows в PowerPoint'е", src: "style/video_in_vantube/style/video №1.mp4", poster: "https://i.ytimg.com/vi/I5VcCqK6pPM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD2I1wynZtq9pTQjCZqIJN0_f_XzQ", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/2">нашем TG</a>`, author: "Vanko Corporation" },
-{ id: "2", name: "Windows 8 в PowerPoint'е", src: "style/video_in_vantube/style/video №2.mp4", poster: "https://i.ytimg.com/vi/hmSQgVujhhA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDC8VSK1HJhJJafhNsBH8EXOSK3zQ", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/6">нашем TG</a>`, author: "Vanko Corporation" },
-{ id: "3", name: "Трейлер релиза Shindows SG Visla! (3-летие шиндофандома)", src: "style/video_in_vantube/style/video №3.mp4", poster: "https://i.ytimg.com/vi/3kABfFOf2j8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBGehqfSrmo8r-vVr4teNLjNEjlOA", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/303">нашем TG</a> или <a href="https://www.youtube.com/watch?v=3kABfFOf2j8"> Ютуб канале</a>`, author: "Vanko Corporation" },
-{ id: "4", name: "ОТКУДА ОН ЗНАЕТ?! #vanko #memes #powerpoint #meme #мем", src: "style/video_in_vantube/style/video №4.mp4", poster: "https://i.ytimg.com/vi/HGWZ-UWUIf0/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDN6O_ADk6SQCX0lSnQA9ysn8qUdQ&usqp=CCk", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/275">нашем TG</a>`, author: "ГригорийПончик" }];
+const VideoDatabase = [
+    { id: "1", name: "Windows в PowerPoint'е", src: "style/video_in_vantube/style/video №1.mp4", poster: "https://i.ytimg.com/vi/I5VcCqK6pPM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD2I1wynZtq9pTQjCZqIJN0_f_XzQ", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/2">нашем TG</a>`, author: "Vanko Corporation" },
+    { id: "2", name: "Windows 8 в PowerPoint'е", src: "style/video_in_vantube/style/video №2.mp4", poster: "https://i.ytimg.com/vi/hmSQgVujhhA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDC8VSK1HJhJJafhNsBH8EXOSK3zQ", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/6">нашем TG</a>`, author: "Vanko Corporation" },
+    { id: "3", name: "Трейлер релиза Shindows SG Visla! (3-летие шиндофандома)", src: "style/video_in_vantube/style/video №3.mp4", poster: "https://i.ytimg.com/vi/3kABfFOf2j8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBGehqfSrmo8r-vVr4teNLjNEjlOA", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/303">нашем TG</a> или <a href="https://www.youtube.com/watch?v=3kABfFOf2j8"> Ютуб канале</a>`, author: "Vanko Corporation" },
+    { id: "4", name: "ОТКУДА ОН ЗНАЕТ?! #vanko #memes #powerpoint #meme #мем", src: "style/video_in_vantube/style/video №4.mp4", poster: "https://i.ytimg.com/vi/HGWZ-UWUIf0/oar2.jpg?sqp=-oaymwEdCJUDENAFSFWQAgHyq4qpAwwIARUAAIhCcAHAAQY=&rs=AOn4CLDN6O_ADk6SQCX0lSnQA9ysn8qUdQ&usqp=CCk", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/275">нашем TG</a>`, author: "ГригорийПончик" },
+    { id: "5", name: "Windows в PowerPoint'е", src: "style/video_in_vantube/style/video №1.mp4", poster: "https://i.ytimg.com/vi/I5VcCqK6pPM/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD2I1wynZtq9pTQjCZqIJN0_f_XzQ", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/2">нашем TG</a>`, author: "Vanko Corporation" },
+    { id: "6", name: "Windows 8 в PowerPoint'е", src: "style/video_in_vantube/style/video №2.mp4", poster: "https://i.ytimg.com/vi/hmSQgVujhhA/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDC8VSK1HJhJJafhNsBH8EXOSK3zQ", description: `Посмотреть полное видео с более хорошим качеством можно в <a href="https://t.me/VanTube_official/6">нашем TG</a>`, author: "Vanko Corporation" },
+    { id: "7", name: "Трейлер релиза Shindows SG Visla! (3-летие шиндофандома)", src: "style/video_in_vantube/style/video №3.mp4", poster: "https://i.ytimg.com/vi/3kABfFOf2j8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBGehqfSrmo8r-vVr4teNLjNEjlOA", description: `Посмотреть полное видео с более хорошим качеством можно в <p><a href="https://t.me/VanTube_official/303">нашем TG</a> или <a href="https://www.youtube.com/watch?v=3kABfFOf2j8"> Ютуб канале</a></p>`, author: "Vanko Corporation" },
+];
 
 const VanPostTypes =
     [
@@ -132,7 +139,10 @@ const VanPostTypes =
         { id: 4, name: "audio-track", keys_list: { name: "", author: "", postType: "", postDescription: "", postAgeReg: "", postAudio: "", postTimeCode: "", postHashtegs: "" } },
         { id: 5, name: "profile", keys_list: { profileName: "", postType: "", profileDescription: "", profileLink: "", profileHashtegs: "" } }
     ]
+//Функции для одиночного применения
+
 //Функция для обработчика клика кнопки (нужна для обработки и создания текста поста в создателе шаблонов постов) 
+
 const VanPostSubmitTarget = () => {
     const post_maker_form = document.getElementById("post-maker-form")
     const post_mkr_frm_input = document.querySelectorAll(".post-mkr-frm-input")
@@ -140,28 +150,298 @@ const VanPostSubmitTarget = () => {
     const isVideoRadio = document.getElementById("isVideo")
     const isShortRadio = document.getElementById("isShort")
     const isMusVideoRadio = document.getElementById("isMusicVideo")
-    const isAudTrackRadio= document.getElementById("isAudioTrack")
+    const isAudTrackRadio = document.getElementById("isAudioTrack")
     const isProfileRadio = document.getElementById("isProfile")
     post_txt_code_items.innerHTML = ``
     post_mkr_frm_input.forEach(input => {
-      if (isVideoRadio.checked || isShortRadio.checked) {
-       if (input.name !== "Аудио" && input.name !== "Имя Профиля" &&  input.name !== "Описание Профиля" && input.name !== "TelegramId" && input.name !== "Хэштег Профиля" && input.name !== "Ссылки Профиля" ) {
-        post_txt_code_items.innerHTML += `<code class="post-text-body-code-item" id="post-txt-code-item">${input.name}: ${input.value} </code>`
-       }
-      }
-      if (isMusVideoRadio.checked || isAudTrackRadio.checked) {
-       if (input.name !== "Имя Профиля" &&  input.name !== "Описание Профиля" && input.name !== "TelegramId" && input.name !== "Хэштег Профиля" && input.name !== "Ссылки Профиля" ) {
-        post_txt_code_items.innerHTML += `<code class="post-text-body-code-item" id="post-txt-code-item">${input.name}: ${input.value} </code>`
-       }
-      }
-      if (isProfileRadio.checked) {
-       if ( (input.name === "Имя Профиля" ||  input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля") ) {
-        post_txt_code_items.innerHTML += `<code class="post-text-body-code-item" id="post-txt-code-item">${input.name}: ${input.value} </code>`
-       }
-      }
-      
-      
+        if (isVideoRadio.checked || isShortRadio.checked) {
+            if (input.name === "Хэштеги") {
+                post_txt_code_items.innerHTML += `<code class="post-text-body-code-item" id="post-txt-code-item">**${input.name}**: 
+             > ${input.value} </code>`
+            }
+            if (input.name !== "Аудио" && input.name !== "Имя Профиля" && input.name !== "Описание Профиля" && input.name !== "TelegramId" && input.name !== "Хэштег Профиля" && input.name !== "Ссылки Профиля" && input.name !== "Хэштеги") {
+                post_txt_code_items.innerHTML += `<code class="post-text-body-code-item" id="post-txt-code-item">**${input.name}**: ${input.value} </code>`
+            }
+        }
+        if (isMusVideoRadio.checked || isAudTrackRadio.checked) {
+            if (input.name === "Хэштеги") {
+                post_txt_code_items.innerHTML += `<code class="post-text-body-code-item" id="post-txt-code-item">**${input.name}**: 
+          > ${input.value} </code>`
+            }
+            if (input.name !== "Имя Профиля" && input.name !== "Описание Профиля" && input.name !== "TelegramId" && input.name !== "Хэштег Профиля" && input.name !== "Ссылки Профиля" && input.name !== "Хэштеги") {
+                post_txt_code_items.innerHTML += `<code class="post-text-body-code-item" id="post-txt-code-item">**${input.name}**: ${input.value} </code>`
+            }
+        }
+        if (isProfileRadio.checked) {
+            if ((input.name === "Имя Профиля" || input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля")) {
+                post_txt_code_items.innerHTML += `<code class="post-text-body-code-item" id="post-txt-code-item">**${input.name}**: ${input.value} </code>`
+            }
+        }
+
+
     })
     console.log("Пост создан!")
 }
 
+const copyVanPostTextCopy = () => { 
+
+    const postTextItems = document.querySelectorAll('#post-txt-code-item')
+    let copyWriteText
+    postTextItems.forEach(item => {
+     copyWriteText += item.innerText
+    })
+    navigator.clipboard.writeText(String(copyWriteText))
+    copyWriteText = ""
+}
+
+// Функции для управления темой сайта
+
+const setTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme',theme)
+    localStorage.setItem("vantube-theme",theme)
+    document.getElementById('theme-toggle-emoji').innerHTML = `${theme === 'dark' ? '☀️' : '🌙'}`
+}
+
+const themeToggle = () => {
+ const theme_toggle_button = document.getElementById("theme-toggle-button")
+ theme_toggle_button.classList.add("clicked");
+        setTimeout(() => {
+            theme_toggle_button.classList.remove('clicked')
+ }, 200)
+ const currentTheme = document.documentElement.getAttribute("data-theme")
+ const newTheme = currentTheme === "dark"? "light" : "dark"
+ setTheme(newTheme)
+ console.log("VanTube - тема сайта >>",newTheme)
+}   
+
+const initTheme = () => {
+  const currentTheme = localStorage.getItem("vantube-theme")
+  if(currentTheme) {
+    document.documentElement.setAttribute("data-theme", currentTheme)
+    setTheme(currentTheme)
+}
+  else {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(prefersDark === true ? "dark" : "light")
+  }
+}
+
+const addToggleThemeButton = () => {
+    document.getElementById("nav-bar_list").innerHTML += `
+      <ul class="nav-item theme-toggle-button-item">
+        <button class="theme-toggle-button" id="theme-toggle-button" onclick="themeToggle()">Поменять тему на: <span id="theme-toggle-emoji">☀️<span></button>
+      </ul>
+    
+    `
+    initTheme()
+}
+
+
+
+
+//Функция для вывода групп с видео-контейнерами 
+
+const VideoContainerLoad = (group_size) => {
+    const groupSize = Number(group_size); //размер группы вдиео
+    const video_column_container = document.getElementById('video-column-container');
+    video_column_container.innerHTML = '';
+
+    // Создаём элементы 1..n
+    const items = Array.from(VideoDatabase);
+
+    // 1. Разбиваем весь список видео на группы 
+    const groups = [];
+    for (let i = 0; i < items.length; i += groupSize) {
+        groups.push(items.slice(i, i + groupSize));
+    }
+    console.log("Получена первая группа - ", JSON.stringify(groups))
+    // 2. Выводим на экран (путем перебора массива групп, и перебора каждой из этих групп)
+    groups.forEach((video_group, index) => {
+        const groupEl = document.createElement('div');
+        groupEl.className = 'video-group-item col-lg-12 col-md-12';
+
+        const itemsEl = document.createElement('div');
+        itemsEl.className = 'video-items row';
+
+        video_group.forEach(video => {
+            const itemEl = document.createElement('span');
+            itemEl.className = 'col-lg-3 col-md-6';
+            itemEl.innerHTML = `
+          <div class="vantube-video-container">
+          <a class="video-link-item" href="видео-страница.html?id=${video.id}">
+              <div class="video-poster">
+                <img src="${video.poster}" alt="">
+              </div>
+              <div class="video-name-item">
+                <p class="video-name">${video.name.slice(0, 25)}...</p>
+              </div>
+          </a>
+          </div>`;
+            itemsEl.appendChild(itemEl);
+        });
+
+        groupEl.appendChild(itemsEl);
+        video_column_container.appendChild(groupEl);
+    });
+
+    return groups;
+}
+
+//Функция для обработки данных VanTube-поста (используется в редакторе постов)
+
+const postMakerListener = () => {
+    const post_txt_code_items = document.getElementById("post-txt-code-items")
+    const isVideoRadio = document.getElementById("isVideo")
+    const isShortRadio = document.getElementById("isShort")
+    const isMusVideoRadio = document.getElementById("isMusicVideo")
+    const isAudTrackRadio = document.getElementById("isAudioTrack")
+    const isProfileRadio = document.getElementById("isProfile")
+    document.querySelectorAll('input[type="text"]').forEach(input => {
+        if (isVideoRadio.checked || isShortRadio.checked) {
+            if (input.name === "Аудио" || input.name === "Имя Профиля" || input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля") {
+                input.style.display = "none"
+            }
+        }
+        if (isMusVideoRadio.checked || isAudTrackRadio.checked) {
+            if (input.name === "Имя Профиля" || input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля") {
+                input.style.display = "none"
+            }
+        }
+        if (isProfileRadio.checked) {
+            if (input.name === "Название" || input.name === "Автор" || input.name === "Описание" || input.name === "Тайм-коды" || input.name === "Аудио" || input.name === "Тайм-коды" || input.name === "Возрастные ограничения") {
+                input.style.display = "none"
+            }
+        }
+    })
+    document.querySelectorAll('input[type="radio"]').forEach(radio_btn => {
+        radio_btn.addEventListener("click", (e) => {
+            const radioBtnName = e.target.name
+            document.querySelectorAll('input[type="radio"]').forEach(r_btn_in_doc => {
+                if (radioBtnName !== r_btn_in_doc.name) {
+                    r_btn_in_doc.checked = false
+                }
+                else {
+                    r_btn_in_doc.checked = true
+                }
+            })
+            document.querySelectorAll('input[type="text"]').forEach(input => {
+                if (isVideoRadio.checked || isShortRadio.checked) {
+                    if (input.name === "Аудио" || input.name === "Имя Профиля" || input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля") {
+                        input.style.display = "none"
+                    }
+                    if (input.name === "Название" || input.name === "Автор" || input.name === "Описание" || input.name === "Тайм-коды" || input.name === "Тайм-коды" || input.name === "Возрастные ограничения") {
+                        input.style.display = "inline"
+                    }
+                }
+                if (isMusVideoRadio.checked || isAudTrackRadio.checked) {
+                    if (input.name === "Имя Профиля" || input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля") {
+                        input.style.display = "none"
+                    }
+                    if (input.name === "Название" || input.name === "Автор" || input.name === "Описание" || input.name === "Тайм-коды" || input.name === "Аудио" || input.name === "Тайм-коды" || input.name === "Возрастные ограничения") {
+                        input.style.display = "inline"
+                    }
+                }
+                if (isProfileRadio.checked) {
+                    if (input.name === "Название" || input.name === "Автор" || input.name === "Описание" || input.name === "Тайм-коды" || input.name === "Аудио" || input.name === "Тайм-коды" || input.name === "Возрастные ограничения") {
+                        input.style.display = "none"
+                    }
+                    if (input.name === "Имя Профиля" || input.name === "Описание Профиля" || input.name === "TelegramId" || input.name === "Хэштег Профиля" || input.name === "Ссылки Профиля") {
+                        input.style.display = "inline"
+                    }
+                }
+            })
+        })
+    })
+}
+
+// Функция для поиска страниц, видео и новостей (только на странице поиска) 
+
+const searchVantubeContent = () => {
+    let input_search = document.getElementById("input-search").value
+    const input_search_item = document.getElementById("input-search")
+    const search_button = document.getElementById("search-action-button")
+    const input_search_page = document.getElementById("input-search-page")
+    const input_search_video = document.getElementById("input-search-video")
+    const input_search_news = document.getElementById("input-search-news")
+    const search_list = document.getElementById("search-list")
+    input_search_page.addEventListener("click", function () {
+        input_search_page.checked = true
+        input_search_video.checked = false
+        input_search_news.checked = false
+    })
+    input_search_video.addEventListener("click", function () {
+        input_search_video.checked = true
+        input_search_page.checked = false
+        input_search_news.checked = false
+    })
+    input_search_news.addEventListener("click", function () {
+        input_search_news.checked = true
+        input_search_page.checked = false
+        input_search_video.checked = false
+    })
+    input_search_item.addEventListener("input", () => {
+        input_search = document.getElementById("input-search").value
+    })
+    search_button.addEventListener("click", function () {
+        this.classList.add("clicked");
+        setTimeout(() => {
+            this.classList.remove('clicked')
+        }, 200)
+        if (input_search_page.checked === true) {
+            search_list.innerHTML = ``
+            PageDatabase.forEach(page => {
+                if (page.name.includes(input_search)) {
+                    search_list.innerHTML += `
+                        <div class="search-list-item">
+                            <a href="${page.url}">
+                                <img class="page-preview" src="style/VanTube News Preview.png" alt="">
+                                <h4>${page.name}</h4>
+                                <p class="search-list-item-description">${page.description}</p>
+                                
+                            </a>
+                        </div> 
+                        `
+                }
+            });
+        }
+        if (input_search_video.checked === true) {
+            search_list.innerHTML = ``
+            VideoDatabase.forEach(video => {
+                if (video.name.includes(input_search)) {
+                    search_list.innerHTML += `
+                        <div class="search-list-item">
+                            <a href="видео-страница.html?id=${video.id}">
+                                <img class="video-preview" src="${video.poster}" alt="">
+                                <h4>${video.name}</h4>
+                                <p class="search-list-item-description">${video.description}</p>
+                                
+                            </a>
+                        </div> 
+                        `
+                }
+            });
+        }
+        if (input_search_news.checked === true) {
+            search_list.innerHTML = ``
+            NewsDatabase.forEach(news => {
+                if (news.headers.includes(input_search)) {
+                    search_list.innerHTML += `
+                        <div class="search-list-item">
+                            <a href="новость.html?id=${news.id}">
+                                <img class="news-preview" src="${news.preview}" alt="">
+                                <h4>${news.headers}</h4>
+                                <p class="search-list-item-description">${news.text.slice(0, 30) + "..."}</p>
+                                <span class="span-normal news-date">Дата публикации: ${news.data}<span>
+                            </a>
+                        </div> 
+                        `
+                }
+            });
+        }
+    })
+}
+
+// Функция для загрузки видео на видео-странице 
+
+
+window.addEventListener("load", addToggleThemeButton)

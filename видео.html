@@ -10,6 +10,7 @@
     <meta property="og:image" content="style/VanTube logo.png">
     <meta property="og:url" content="https://vantubeofficial-ship-it.github.io/vantube_official/видео.html">
     <meta property="og:type" content="website">
+    <meta property="og:name" content="VanTube Official">
     <title>VanTube видео</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -60,7 +61,8 @@
                                     <a class="nav-link active" href="видео.html">Видео</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="создатель шаблонов постов.html">Создатель шаблонов постов</a>
+                                    <a class="nav-link" href="создатель шаблонов постов.html">Создатель шаблонов
+                                        постов</a>
                                 </li>
                             </ul>
                         </div>
@@ -69,56 +71,51 @@
             </header>
 
             <section>
-                <div class="header-banner">
-                    <a href="">
-                        <p></p>
-                    </a>
-                </div>
-                <div class="news-page">
-                    <h1>VanTube Видео</h1>
-                    <div class="video-column-container">
-                        <div class="row" id="video-column-container">
+                <div class="vantube-main">
+                    <div class="header-banner">
+                        <a href="">
+                            <p></p>
+                        </a>
+                    </div>
+                    <div class="news-page">
+                        <h1>VanTube Видео</h1>
+                        <div class="video-column-container">
+                            <div class="row" id="video-column-container">
 
+                            </div>
                         </div>
                     </div>
                 </div>
-                <footer>
-                    <div class="footer-object">
-                        <div class="footer-block" id="uridic-info">
-                            <p>2026 Vanko Corporation. Все права защищены</p>
-                        </div>
-                        <div class="footer-block" id="links-footer">
-                            <a href="https://youtube.com/@VanTubeOfficial" target="_blank"><img
-                                    src="style/Youtube logo.png" alt=""></a>
-                            <a href=" https://t.me/VanTube_official" target="_blank"><img src="style/Telegram logo.png"
-                                    alt=""></a>
-                        </div>
+            </section>
+            <footer>
+                <div class="footer-object">
+                    <div class="footer-block" id="uridic-info">
+                        <p>2026 Vanko Corporation. Все права защищены</p>
                     </div>
-                </footer>
+                    <div class="footer-block" id="links-footer">
+                        <a href="https://youtube.com/@VanTubeOfficial" target="_blank"><img src="style/Youtube logo.png"
+                                alt=""></a>
+                        <a href=" https://t.me/VanTube_official" target="_blank"><img src="style/Telegram logo.png"
+                                alt=""></a>
+                    </div>
+                </div>
+            </footer>
 
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-                    crossorigin="anonymous"></script>
-                <script src="VanTube datebase.js"></script>
-                <script>
-                    //Получает весь список видео из базы и выводит контейнеры с ними на экран
-                    const video_column_container = document.getElementById("video-column-container");
-                    window.addEventListener("load", function () {
-                        VideoDatabase.forEach(video => {
-                            video_column_container.innerHTML += `
-                       <div class="col-lg-3 col-md-6">
-                                <div class="vantube-video-container">
-                                    <div class="video-poster"><img src="${video.poster}" alt=""></div>
-                                    <div class="text-header">
-                                        <a href="видео-страница.html?id=${video.id}">
-                                            <p>${video.name}</p>
-                                        </a>
-                                     </div>
-                                </div>
-                        </div>`
-                        })
-                    })
-                </script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+                crossorigin="anonymous"></script>
+            <script src="VanTube datebase.js"></script>
+            <script>
+                //Получает весь список видео из базы данных VanTube и выводит контейнеры с ними на экран
+                const video_column_container = document.getElementById("video-column-container");
+                if (document.documentElement.clientWidth > 1228) {
+                    window.addEventListener("load", VideoContainerLoad(4) )
+                }
+                if (document.documentElement.clientWidth < 1228) {
+                    window.addEventListener("load", VideoContainerLoad(3) )
+                }
+                
+            </script>
     </body>
 
 </html>
