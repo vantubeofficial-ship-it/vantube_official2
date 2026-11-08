@@ -260,15 +260,17 @@
            recomm_bar.style.display = "none"
            document.querySelector(".main-container").classList.add("full-screen-mode")
            document.querySelector(".video-view-container").classList.add("full-screen-mode")
+           recomm_bar.classList.add("full-screen-mode")
         }
         else {
          full_screen_mode_value = (!full_screen_mode_value)
            document.querySelector("header").style.display = "block"
            document.querySelector("footer").style.display = "block"
            document.querySelector(".video-description-items").style.display = "block"
-           recomm_bar.style.display = "flex"
+           recomm_bar.style.display = "block"
            document.querySelector(".main-container").classList.remove("full-screen-mode")
-           document.querySelector(".video-view-container").classList.remove("full-screen-mode")    
+           document.querySelector(".video-view-container").classList.remove("full-screen-mode")
+           recomm_bar.classList.remove("full-screen-mode")    
         }
         })
         </script>
