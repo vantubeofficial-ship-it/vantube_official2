@@ -45,6 +45,7 @@ html>body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--vantube-txt-color--);
     background-color: var(--vantube-bg-color--);
+    transition: background-color 0.3s ease, transform 0.2s ease-out;
 }
 
 p {
@@ -69,6 +70,7 @@ h1 {
     text-align: center;
     display: inline;
     margin: 0.5em;
+    transition: background-color 0.3s ease, transform 0.2s ease-out;
 }
 
 span {
@@ -85,6 +87,7 @@ button {
     margin-inline: var(--vantube-m-i--);
     padding: 0.25em;
     border-radius: calc(var(--vantube-border-r--) + var(--vantube-border-r--));
+    transition: background-color 0.3s ease, transform 0.2s ease-out;
 }
 
 button.clicked {
@@ -98,6 +101,7 @@ input {
     border: var(--vantube-border-s--);
     margin-inline: var(--vantube-m-i--);
     padding: 0.25em;
+   transition: background-color 0.3s ease, transform 0.2s ease-out;
 }
 
 input:focus {
@@ -105,6 +109,11 @@ input:focus {
     background-color: #bfdbee;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+
+div {
+    transition: background-color 0.3s ease, transform 0.2s ease-out;
+}
+
 
 /*Футер*/
 
@@ -191,6 +200,7 @@ footer {
     border: var(--vantube-table-border-style--);
     color: white;
     width: 40%;
+    transition: background-color 0.3s ease, transform 0.2s ease-out;
 }
 
 .v-table>.v-table-caption {

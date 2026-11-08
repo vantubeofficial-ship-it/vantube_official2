@@ -1,19 +1,437 @@
-/*Основные CSS переменные*/
+/* =====================================================================
+   VanTube Player — стили в духе YouTube
+   Классы и id полностью совпадают с оригинальной разметкой,
+   поэтому существующий JS работает без изменений.
+
+   Как менять внешний вид: правьте переменные в блоке :root ниже.
+   ===================================================================== */
+
 :root {
---vantube-vid-name-color--: rgb(54, 54, 54);
---vantube-vid-item-h-bg-color--: rgb(231, 229, 229);
---vantube-vid-i-border-s--: 0.2em solid rgb(54, 54, 54);
+  --vt-surface: #dcdcdc;         /* фон карточек (рекомендации и т.п.) */
+  --vt-text: #000000;            /* основной цвет текста */
+  --vt-text-muted: #aaaaaa;      /* второстепенный текст */
+  --vt-accent: #002aff;          /* акцентный цвет (полоса прогресса) */
+  --vt-radius: 14px;             /* скругление углов плеера */
+  --vt-gap: 24px;                /* отступы между блоками */
+  --vt-controls-height: 48px;    /* высота нижней панели кнопок */
+  --vt-icon-size: 24px;          /* размер иконок на кнопках */
+  --vt-transition: 0.2s ease;    /* скорость анимаций */
 } [data-theme="dark"] {
---vantube-vid-name-color--: rgb(254, 254, 254);
---vantube-vid-item-h-bg-color--: rgb(75, 75, 75);
---vantube-vid-i-border-s--: 0.2em solid rgb(84, 84, 84);
+  --vt-surface: #1a1a1a;         /* фон карточек (рекомендации и т.п.) */
+  --vt-text: #f1f1f1;            /* основной цвет текста */
+  --vt-text-muted: #aaaaaa;      /* второстепенный текст */
+  --vt-radius: 14px;             /* скругление углов плеера */
+  --vt-gap: 24px;                /* отступы между блоками */
+  --vt-controls-height: 48px;    /* высота нижней панели кнопок */
+  --vt-icon-size: 24px;          /* размер иконок на кнопках */
+  --vt-transition: 0.2s ease;    /* скорость анимаций */
+}
+
+/* ---------- Базовый сброс ---------- */
+.vantube-main,
+.vantube-main * {
+  box-sizing: border-box;
+}
+
+.vantube-main {
+  color: var(--vt-text);
+  font-family: "Roboto", "Segoe UI", Arial, sans-serif;
+  padding: var(--vt-gap);
+}
+
+/* ---------- Общая сетка: плеер слева, рекомендации справа ---------- */
+.main-container {
+  display: flex;
+  gap: var(--vt-gap);
+  max-width: 1600px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* Левая колонка: плеер + описание */
+#video-container {
+  flex: 1 1 auto;
+  min-width: 0;                  /* позволяет колонке сжиматься */
+}
+
+/* ---------- Область видео ---------- */
+.video-view-container {
+  position: relative;            /* нужно для наложения логотипа и панели */
+  width: 100%;
+  aspect-ratio: 16 / 9;          /* пропорции видео, меняйте при необходимости */
+  background: #000;
+  border-radius: var(--vt-radius);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Контейнер самого <video> и сам <video> занимают всё место */
+.vantube-video-item,
+#vantube-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;           /* cover — если нужно обрезать края */
+  background: #000;
+  cursor: pointer;
+}
+
+/* ---------- Логотип в левом верхнем углу ---------- */
+.vantube-logo {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.85;
+  pointer-events: none;          /* клики проходят сквозь логотип */
+  transition: opacity var(--vt-transition);
+}
+.vantube-logo img {
+  height: 28px;
+  width: auto;
+}
+.vantube-logo h2 {
+  margin: 0;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* ---------- Панель управления ---------- */
+.video-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  padding: 28px 12px 6px;
+  /* затемнение снизу, чтобы кнопки читались на любом видео */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  opacity: 0;                    /* по умолчанию скрыта */
+  transform: translateY(6px);
+  transition: opacity var(--vt-transition), transform var(--vt-transition);
+}
+
+/* Показываем панель при наведении, фокусе или паузе */
+.video-view-container:hover .video-controls,
+.video-view-container:focus-within .video-controls {
+  opacity: 1;
+  transform: none;
+}
+
+/* На сенсорных экранах hover нет — панель видна всегда */
+@media (hover: none) {
+  .video-controls {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Полоса прогресса ---------- */
+.head-controls-menu-items {
+  width: 100%;
+}
+#video-progress {
+  width: 100%;
+  height: 16px;
+  display: flex;
+  align-items: center;
+}
+
+/* Общий стиль для обоих ползунков (прогресс и громкость) */
+#video-proggressbar-slider,
+#volume-range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* Прогресс-бар */
+#video-proggressbar-slider {
+  width: 100%;
+  height: 16px;
+}
+
+/* Дорожка (Chrome / Safari / Edge)
+   Заливка красным идёт через переменную --progress (0%–100%).
+   Если JS её не задаёт, заливка просто останется нулевой — бар работает как обычно. */
+#video-proggressbar-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    var(--vt-accent) var(--progress, 0%),
+    rgba(255, 255, 255, 0.3) var(--progress, 0%)
+  );
+  transition: height 0.1s;
+}
+/* Дорожка (Firefox) */
+#video-proggressbar-slider::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+#video-proggressbar-slider::-moz-range-progress {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--vt-accent);
+}
+
+/* Бегунок: скрыт, появляется при наведении */
+#video-proggressbar-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  margin-top: -5px;              /* центрируем относительно дорожки */
+  border-radius: 50%;
+  background: var(--vt-accent);
+  transform: scale(0);
+  transition: transform 0.1s;
+}
+#video-proggressbar-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 50%;
+  background: var(--vt-accent);
+  transform: scale(0);
+  transition: transform 0.1s;
+}
+#video-proggressbar-slider:hover::-webkit-slider-thumb,
+#video-proggressbar-slider:active::-webkit-slider-thumb {
+  transform: scale(1);
+}
+#video-proggressbar-slider:hover::-moz-range-thumb,
+#video-proggressbar-slider:active::-moz-range-thumb {
+  transform: scale(1);
+}
+#video-proggressbar-slider:hover::-webkit-slider-runnable-track {
+  height: 6px;
+}
+
+/* ---------- Нижний ряд кнопок ---------- */
+.lower-controls-menu-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--vt-controls-height);
+}
+.control-menu {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Кнопки-иконки */
+.video-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--vt-transition), transform var(--vt-transition);
+}
+.video-controls button:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+.video-controls button:active {
+  transform: scale(0.92);
+}
+.video-controls button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.video-controls button img {
+  width: var(--vt-icon-size);
+  height: var(--vt-icon-size);
+  object-fit: contain;
+  /* Если ваши иконки тёмные — раскомментируйте, чтобы сделать их белыми:
+  filter: invert(1); */
+  pointer-events: none;
+}
+
+/* ---------- Громкость ---------- */
+#volume-range-slider {
+  width: 0;                      /* сворачивается, пока курсор не рядом */
+  opacity: 0;
+  transition: width var(--vt-transition), opacity var(--vt-transition);
+}
+/* Раскрываем ползунок при наведении на блок слева (кнопка + ползунок) */
+.control-menu.left:hover #volume-range-slider,
+#volume-range-slider:focus {
+  width: 80px;
+  opacity: 1;
+  margin: 0 8px;
+}
+#volume-range-slider::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.4);
+}
+#volume-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  margin-top: -4.5px;
+  border-radius: 50%;
+  background: #fff;
+}
+#volume-range-slider::-moz-range-track {
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.4);
+}
+#volume-range-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* ---------- Время "текущее / общее" ---------- */
+#video-time {
+  margin: 0 0 0 8px;
+  font-size: 13px;
+  color: var(--vt-text);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums; /* цифры не "прыгают" при смене */
+}
+.video-time-item {
+  font-weight: 500;
+}
+
+/* ---------- Полноэкранный режим ---------- */
+#video-container:fullscreen,
+#video-container:-webkit-full-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #000;
+}
+#video-container:fullscreen .video-view-container,
+#video-container:-webkit-full-screen .video-view-container {
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
+}
+/* В полноэкранном режиме описание прячем */
+#video-container:fullscreen .video-description-items,
+#video-container:-webkit-full-screen .video-description-items {
+  display: none;
+}
+
+/* ---------- Описание под видео ---------- */
+.video-description-items {
+  margin-top: 16px;
+}
+#head {                          /* заголовок видео */
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+#author {                        /* автор видео */
+  font-size: 14px;
+  color: var(--vt-text-muted);
+}
+/* Пустые блоки не занимают место, пока JS их не заполнит */
+#head:empty,
+#author:empty {
+  display: none;
+}
+
+/* ---------- Блок рекомендаций справа ---------- */
+.recommendations-bar {
+  flex: 0 0 380px;               /* ширина колонки */
+  max-height: calc(100vh - 2 * var(--vt-gap));
+  overflow-y: auto;
+  padding: 16px;
+  background: var(--vt-surface);
+  border-radius: var(--vt-radius);
+  position: sticky;              /* остаётся на месте при прокрутке */
+  top: var(--vt-gap);
+}
+.recommendations-bar h4 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+/* Тонкий скроллбар */
+.recommendations-bar::-webkit-scrollbar {
+  width: 8px;
+}
+.recommendations-bar::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+.recommendations-bar > .recomm-bar-item > .video-link > .video-preview > img {
+  width: 336px;
+  height: 188px;
+  border-radius: 0.5em;
+}
+
+/* =====================================================================
+   АДАПТИВНОСТЬ
+   ===================================================================== */
+
+/* Планшеты: рекомендации уходят под видео */
+@media (max-width: 1000px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .recommendations-bar {
+    flex: none;
+    width: 100%;
+    max-height: none;
+    position: static;
+  }
+  .main-container.full-screen-mode {
+    flex-direction: row;
+  }
+}
+
+/* Телефоны: меньше отступов, компактнее панель */
+@media (max-width: 600px) {
+  :root {
+    --vt-gap: 12px;
+    --vt-radius: 0px;            /* видео на всю ширину без скруглений */
+    --vt-icon-size: 22px;
+  }
+  .vantube-main {
+    padding: 0 0 var(--vt-gap);
+  }
+  .video-description-items {
+    padding: 0 12px;
+  }
+  .vantube-logo img { height: 22px; }
+  .vantube-logo h2  { font-size: 15px; }
+  .video-controls button { width: 36px; height: 36px; }
+  /* На телефоне громкость регулируют кнопками устройства */
+  #volume-range-slider { display: none; }
+  #video-time { font-size: 12px; }
+  #head { font-size: 17px; }
 }
 
 /*Страница с лентой рекомендаций видео*/
 
-.main-container {
+.v-recommbar-main-container {
     display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 24px;
   max-width: 1750px;
   margin: 0 auto;
@@ -38,11 +456,6 @@
     flex-direction: row;
 }
 
-
-.video-container {
-    width: 70%;
-}
-
 .vantube-video-container {
     display: flex;
     flex-direction: column;
@@ -55,10 +468,11 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 500;
     font-size: 1.6em;
+    transition: background-color 0.25s ease, transform 0.15s ease-out;
 }
 
 .vantube-video-container:hover {
-    background-color: var(--vantube-vid-item-h-bg-color--);
+    background-color: var(--vt-surface);
 }
 
 
@@ -97,322 +511,3 @@
 
 /*Страница для просмотра видео*/
 
-.recommendations-bar > .recomm-bar-item > .video-preview > .video-preview-img{
-    width: 200px;
-    height: 125px;
-}
-
-.video-container {
-    flex: 1;
-    min-width: 0;
-}
-
-
-.vantube-logo {
-    display: flex;
-}
-
-.vantube-logo>img {
-    width: 45px;
-    margin: 0.5em;
-    height: 35px;
-}
-
-.video-container>.video-view-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
-    border-style: solid;
-    border-color: var(--vantube-vid-i-border-s--);
-    border-radius: 10px;
-    position: relative;
-}
-
-.video-container>.video-view-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    align-items: left;
-    border-style: solid;
-    border-radius: 10px;
-}
-
-.video-container>.video-view-container.full-screen-mode {
-    margin: none;
-    border-radius: 0px;
-    width: 100%;
-    border-style: none;
-} 
-
-.video-container>.video-view-container>.vantube-video-item {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    height: 80%;
-    overflow: hidden; 
-    border-radius: 12px; 
-    position: relative;
-}
-
-.video-container>.video-view-container>.vantube-video-item>video {
-    width: 100%;
-    display: block;
-}
-
-.video-container>.video-view-container>.video-controls {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    justify-content: space-between;
-    align-items: center;
-    margin-block: 1em;
-    height: 15%;
-    width: 100%;
-}
-
-.video-controls> .lower-controls-menu-items {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-.video-controls> .lower-controls-menu-items > .control-menu {
-    display: flex;
-    width: 100%;
-}
-
-.control-menu.right {
-    width: 8%;
-    justify-content: right;
-}
-
-
-.control-menu.left {
-    width: 92%;
-}
-
-.video-controls> .lower-controls-menu-items > .control-menu > button {
-    background: none;
-    border-style: none;
-}
-
-.video-controls> .lower-controls-menu-items > .control-menu > button>img {
-    width: 1.5em;
-    height: 1.5em;
-
-}
-
-.video-controls> .head-controls-menu-items {
-    width: 100%;
-}
-
-#video-progress {
-    display: flex;
-    align-items: left;
-    width: 100%;
-}
-
-#video-progress>#video-proggressbar-slider {
-    width: 100%;
-    accent-color: rgb(23, 43, 224);
-}
-
-#volume-range-slider {
-    width: 5em;
-}
-
-.control-menu.left > #video-time {
-    color: white;
-    margin-inline: 0.1em;
-}
-
-
-
-.video-container> .video-description-items {
-    height: 40%;
-}
-
-.video-container> .video-description-items>.head {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: var(--vantube-vid-i-border-s--);
-    border-radius: 5px;
-}
-
-.video-container > .video-description-items>.head> h2 {
- margin: 5px;
-}
-
-.video-container> .video-description-items>.head>p {
-    margin: 5px;
-    width: 100%;
-}
-
-.recommendations-bar {
-    width: 402px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    justify-content: center;
-    align-items: center;
-}
-
-.recomm-bar-item {
-    border-radius: 0.5em;
-    padding: 0.5em;
-}
-
-.recomm-bar-item:hover {
-    background-color: #e7e5e5;
-}
-
-.recomm-bar-item>a {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: left;
-    align-items: start;
-    text-decoration: none;
-}
-
-.recomm-bar-item>a>.video-preview {
-    display: flex;
-}
-
-.recomm-bar-item>a>.video-preview>img {
-    width: 14em;
-    height: 9em;
-    border-radius: 0.3em;
-}
-
-.recomm-bar-item>a>.video-name {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 1em;
-    justify-content: center;
-}
-
-.recomm-bar-item>a>.video-name>span {
-    text-align: left;
-    font-weight: bold;
-    font-size: 1em;
-    display: flex;
-}
-
-#video-time {
-    margin-inline: 5em;
-}
-
-@media (max-width: 1435px) {
-    
-    #volume-range-slider {
-    width: 5em;
-
-    .vantube-video-container {
-     font-weight: 300;
-     font-size: 0.5em;   
-    }
-
-}
-
-}
-
-@media (max-width:1260px) {
-    .video-poster > img {
-    width: 245px;
-    height: 145px;
-}
-}
-
-@media (max-width: 1201px) {
-    
-    #volume-range-slider {
-    width: 5em;
-
-}
-
-}
-
-@media (max-width: 980px) {
-
-    .video-container>.head {
-        display: flex;
-        flex-direction: column;
-        justify-content: left;
-        background-color: rgb(201, 201, 201);
-        border-radius: 5px;
-    }
-    
-     .recomm-bar-item>a {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .video-poster > img {
-    width: 300px;
-    height: 200px;
-}
-
-    .main-container {
-        flex-direction: column;
-    }
-
-    .video-container {
-        width: 100%;
-    }
-
-    .recommendations-bar {
-        width: 100%;
-    }
-}
-
-@media (max-width: 912px) {
-
-    .video-container>.head {
-        display: flex;
-        flex-direction: column;
-        justify-content: left;
-        background-color: rgb(201, 201, 201);
-        border-radius: 5px;
-    }
-
-    #video-time {
-    margin-inline: 2.5em;
-    }
-
-
-
-
-}
-@media (max-width: 600px) {
-
-    .video-container>.head {
-        display: flex;
-        flex-direction: column;
-        justify-content: left;
-        background-color: rgb(201, 201, 201);
-        border-radius: 5px;
-    }
-
-    .recomm-bar-item>a {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-}
-
-@media (max-width: 500px) {
-#volume-range-slider {
-        display: none;
-    }
-}
